@@ -70,10 +70,12 @@ export async function createComponentRecord({ componentAliasName, records }) {
 export function buildRoomTypeRecordPayload({
   parentRecordId,
   miBlockId,
+  parentMiBlockId,
   siteId,
   roomTypeCode,
   roomTypeDescription,
   roomImagesAlt,
+  profileId,
 }) {
   const data = {
     ProfileCouponMapping: '',
@@ -109,6 +111,19 @@ export function buildRoomTypeRecordPayload({
     ComponentAliasName: 'room-type',
     Status: true,
     IsPlaceholderRecord: false,
+    // Links this record to the property's Profile (confirmed required in
+    // practice via CMS admin's manual "Select Profile" field - a room-type
+    // record without it may not be visible/functional).
+    // First guess (bare SelectedProfiles on CreateComponentRecord) failed.
+    // Captured the ADMIN UI's real save request (different endpoint,
+    // /ccadmin/cms/Component/SaveComponentRecord) - it sends SelectedProfiles
+    // alongside PreviousAssignProfileIds (same value) and MainParentComponentId/
+    // ParentComponentId (the parent property-data component's own MiBlockId).
+    // Retrying SelectedProfiles on THIS endpoint (CreateComponentRecord) now
+    // WITH those companion fields, in case they're required together. VERIFY
+    // in CMS admin before trusting this.
+    ...(profileId ? { SelectedProfiles: String(profileId), PreviousAssignProfileIds: String(profileId) } : {}),
+    ...(parentMiBlockId ? { MainParentComponentId: String(parentMiBlockId), ParentComponentId: String(parentMiBlockId) } : {}),
     RecordJsonString: JSON.stringify(data),
   };
 }
