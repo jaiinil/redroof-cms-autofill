@@ -1,0 +1,4322 @@
+TRC1493
+Admiralty Inn & Suites
+1
+Published
+Active
+
+RRI388
+Red Roof Inn & Suites Albany, GA -- Red Roof UAT
+1
+Published
+Active
+
+HTS1260
+HomeTowne Inn East Syracuse -- HK Product Team [Automation]
+1
+Published
+Active
+
+HTS1367
+HomeTowne Studios & Conference Center Chicago
+1
+Published
+Active
+
+RRI511
+Red Roof Inn & Suites Brunswick
+1
+Published
+Active
+
+TRC1545
+Allentown Park Hotel by The Red Collection
+2
+Published
+Active
+
+HTS683
+HomeTowne Studios San Antonio E-Frost Bank Center
+1
+Published
+Active
+
+HTS1022
+HomeTowne Studios Detroit - Livonia
+1
+Published
+Active
+
+RRI064
+Red Roof Inn Fairmont
+1
+Published
+Active
+
+RRI068
+Red Roof PLUS+ Boston - Framingham
+1
+Published
+Active
+
+RRI070
+Red Roof Inn Detroit
+1
+Published
+Active
+
+RRI066
+Red Roof Inn Mt Laurel
+1
+Published
+Active
+
+RRI071
+Red Roof Inn Chicago
+1
+Published
+Active
+
+RRI075
+Admiralty Inn & Suites
+1
+Published
+Active
+
+RRI076
+Red Roof Inn Jacksonville
+1
+Published
+Active
+
+RRI078
+Red Roof Inn Chicago - Lansing
+1
+Published
+Active
+
+RRI079
+Red Roof Inn Pittsburgh North
+1
+Published
+Active
+
+RRI080
+Red Roof Inn Cincinnati East
+1
+Published
+Active
+
+RRI081
+Red Roof Inn Jacksonville Airport
+1
+Published
+Active
+
+RRI083
+Red Roof Inn Pensacola
+1
+Published
+Active
+
+RRI084
+Red Roof Inn Detroit
+1
+Published
+Active
+
+RRI086
+Red Roof Inn Richmond South
+1
+Published
+Active
+
+RRI090
+Red Roof Inn Columbia East
+1
+Published
+Active
+
+RRI092
+Red Roof Inn Tampa Fairgrounds
+1
+Published
+Active
+
+RRI093
+Red Roof Inn Virginia Beach
+1
+Published
+Active
+
+RRI094
+Red Roof Inn Cleveland - Westlake
+1
+Published
+Active
+
+RRI095
+Red Roof Inn Greenville
+1
+Published
+Active
+
+RRI099
+Red Roof Inn Greensboro Coliseum
+1
+Published
+Active
+
+RRI1014
+Red Roof Inn Houston Spring North
+1
+Published
+Active
+
+RRI102
+Red Roof Inn Chicago-O'Hare
+1
+Published
+Active
+
+RRI104
+Red Roof PLUS+ University at Buffalo
+1
+Published
+Active
+
+RRI105
+Red Roof Inn Enfield
+1
+Published
+Active
+
+RRI107
+Red Roof PLUS+ Baltimore-Washington DC/ BWI South
+1
+Published
+Active
+
+RRI109
+Red Roof Inn Huntington
+1
+Published
+Active
+
+RRI110
+Red Roof Inn Allentown Airport
+1
+Published
+Active
+
+RRI111
+Red Roof Inn Princeton - Ewing
+1
+Published
+Active
+
+RRI112
+Red Roof Inn Albany Airport
+1
+Published
+Active
+
+RRI113
+Red Roof PLUS Statesville
+1
+Published
+Active
+
+RRI101
+Red Roof Inn St Clairsville
+1
+Published
+Active
+
+RRI114
+Red Roof Inn Atlanta South
+1
+Published
+Active
+
+RRI115
+Red Roof PLUS+ Nashville North
+1
+Published
+Active
+
+RRI116
+Red Roof Inn Columbia
+1
+Published
+Active
+
+RRI118
+Red Roof Inn Louisville Expo Airport
+1
+Published
+Active
+
+RRI119
+Red Roof PLUS+ Philadelphia Airport
+1
+Published
+Active
+
+RRI120
+Red Roof Inn Tallahassee - University
+1
+Published
+Active
+
+RRI121
+Red Roof State University OSU
+1
+Published
+Active
+
+RRI142
+Red Roof Inn North Charleston Coliseum
+1
+Published
+Active
+
+RRI126
+Red Roof Inn St Louis
+1
+Published
+Active
+
+RRI127
+Red Roof PLUS Columbus
+1
+Published
+Active
+
+RRI140
+Red Roof Inn Lafayette
+1
+Published
+Active
+
+RRI139
+Red Roof Inn Wilkes-Barre Arena
+1
+Published
+Active
+
+RRI137
+Red Roof Inn Buffalo - Niagara Airport
+1
+Published
+Active
+
+RRI136
+Red Roof Inn Aberdeen
+1
+Published
+Active
+
+RRI129
+Red Roof Inn Dallas
+1
+Published
+Active
+
+RRI135
+Red Roof PLUS+ St Louis - Forest Park/ Hampton Ave
+1
+Published
+Active
+
+RRI130
+Red Roof PLUS+ Atlanta
+1
+Published
+Active
+
+RRI134
+Red Roof Inn Louisville Fair And Expo
+1
+Published
+Active
+
+RRI131
+Red Roof Inn Jackson Downtown
+1
+Published
+Active
+
+RRI132
+Red Roof Inn Washington DC - Lanham
+1
+Published
+Active
+
+RRI145
+Red Roof Inn Mystic - New London
+1
+Published
+Active
+
+RRI146
+Red Roof Inn Asheville – Biltmore West
+1
+Published
+Active
+
+RRI148
+Red Roof Inn Hilton Head Island
+1
+Published
+Active
+
+RRI165
+Red Roof Inn Philadelphia
+1
+Published
+Active
+
+RRI149
+Red Roof PLUS+ Baltimore-Washington DC/BWI Airport
+1
+Published
+Active
+
+RRI166
+Red Roof Inn Atlanta - Norcross
+1
+Published
+Active
+
+RRI150
+Red Roof PLUS+ Secaucus - Meadowlands - NYC
+1
+Published
+Active
+
+RRI151
+Red Roof Inn Salem
+1
+Published
+Active
+
+RRI167
+Red Roof PLUS+ Chicago
+1
+Published
+Active
+
+RRI152
+Red Roof Inn Hickory
+1
+Published
+Active
+
+RRI168
+Red Roof PLUS+ & Suites Knoxville West-Cedar Bluff
+1
+Published
+Active
+
+RRI154
+Red Roof Inn Chesapeake Conference Center
+1
+Published
+Active
+
+RRI155
+Red Roof Inn Durham - Triangle Park
+1
+Published
+Active
+
+RRI169
+Red Roof PLUS+ Washington DC
+1
+Published
+Active
+
+RRI156
+Red Roof Inn Greensboro Airport
+1
+Published
+Active
+
+RRI157
+Red Roof Inn Syracuse
+1
+Published
+Active
+
+RRI158
+Red Roof Inn West Monroe
+1
+Published
+Active
+
+RRI170
+Red Roof Inn Champaign - University
+1
+Published
+Active
+
+RRI160
+Red Roof Inn Washington DC - Laurel
+1
+Published
+Active
+
+RRI171
+Red Roof Inn Cincinnati
+1
+Published
+Active
+
+RRI173
+Red Roof Inn Tampa - Brandon
+1
+Published
+Active
+
+RRI161
+Red Roof PLUS+ Nashville Fairgrounds
+1
+Published
+Active
+
+RRI162
+Red Roof Inn Chattanooga – Hamilton Place
+1
+Published
+Active
+
+RRI174
+Red Roof PLUS+ Pittsburgh East
+1
+Published
+Active
+
+RRI164
+Red Roof Inn Durham - Duke Univ Medical Center
+1
+Published
+Active
+
+RRI178
+Red Roof Inn Florence - Civic Center
+1
+Published
+Active
+
+RRI232
+Red Roof Inn Myrtle Beach Hotel - Market Common
+1
+Published
+Active
+
+RRI231
+Red Roof Inn Houston - Brookhollow
+1
+Published
+Active
+
+RRI227
+Red Roof PLUS+ West Palm Beach
+1
+Published
+Active
+
+RRI226
+Red Roof Inn Santa Ana
+1
+Published
+Active
+
+RRI225
+Red Roof Inn Tucson South - Airport
+1
+Published
+Active
+
+RRI224
+Red Roof Inn Laredo
+1
+Published
+Active
+
+RRI223
+Red Roof Inn San Antonio - Airport
+1
+Published
+Active
+
+RRI222
+Red Roof PLUS+ Houston - Energy Corridor
+1
+Published
+Active
+
+RRI221
+Red Roof PLUS+ El Paso East
+1
+Published
+Active
+
+RRI180
+Red Roof Inn Utica
+1
+Published
+Active
+
+RRI213
+Red Roof Inn San Dimas - Fairplex
+1
+Published
+Active
+
+RRI181
+Red Roof PLUS+ Washington DC - Oxon Hill
+1
+Published
+Active
+
+RRI182
+Red Roof Inn Detroit
+1
+Published
+Active
+
+RRI184
+Red Roof Inn Lexington South
+1
+Published
+Active
+
+RRI185
+Red Roof Inn Philadelphia
+1
+Published
+Active
+
+RRI187
+Red Roof Inn Washington DC
+1
+Published
+Active
+
+RRI211
+Red Roof Inn Tinton Falls - Jersey Shore
+1
+Published
+Active
+
+RRI189
+Red Roof Inn Detroit Metro Airport
+1
+Published
+Active
+
+RRI209
+Red Roof PLUS+ Baltimore North - Timonium -- Red Roof UAT [FP]
+1
+Published
+Active
+
+RRI208
+Red Roof Inn Johnson City
+1
+Published
+Active
+
+RRI190
+Red Roof PLUS+ Wilmington
+1
+Published
+Active
+
+RRI207
+Red Roof Inn Akron -- Red Roof UAT
+1
+Published
+Active
+
+RRI191
+Red Roof Inn Detroit
+1
+Published
+Active
+
+RRI206
+Red Roof PLUS+ Nashville Airport
+1
+Published
+Active
+
+RRI192
+Red Roof PLUS+ Washington DC
+1
+Published
+Active
+
+RRI205
+Red Roof Inn Dayton - Fairborn/ Nutter Center
+1
+Published
+Active
+
+RRI203
+Red Roof Inn Binghamton - Johnson City
+1
+Published
+Active
+
+RRI193
+Red Roof PLUS+ West Springfield
+1
+Published
+Active
+
+RRI201
+Red Roof Inn Chapel Hill - UNC
+1
+Published
+Active
+
+RRI194
+Red Roof Inn Edison
+1
+Published
+Active
+
+RRI199
+Red Roof PLUS+ Chicago - Hoffman Estates
+1
+Published
+Active
+
+RRI197
+Red Roof Inn Milford - New Haven
+1
+Published
+Active
+
+RRI195
+Red Roof PLUS+ Chicago - Naperville
+1
+Published
+Active
+
+RRI196
+Red Roof Inn Toledo - University
+1
+Published
+Active
+
+RRI003
+Red Roof Inn Kalamazoo East - Expo Center
+1
+Published
+Active
+
+RRI006
+Red Roof Inn Dayton South - Miamisburg
+1
+Published
+Active
+
+RRI007
+Red Roof Inn Michigan City
+1
+Published
+Active
+
+RRI009
+Red Roof Inn Columbus West - Hilliard
+1
+Published
+Active
+
+RRI010
+Red Roof Inn Danville, PA
+1
+Published
+Active
+
+RRI011
+Red Roof Inn Grand Rapids Airport
+1
+Published
+Active
+
+RRI012
+Red Roof Inn Detroit - Roseville/ St Clair Shores
+1
+Published
+Active
+
+RRI062
+Red Roof Inn Lafayette
+1
+Published
+Active
+
+RRI013
+Red Roof Inn Indianapolis South
+1
+Published
+Active
+
+RRI015
+Red Roof Inn Merrillville
+1
+Published
+Active
+
+TRC1210
+SPOT X Hotel
+1
+Published
+Inactive
+
+RRI016
+Red Roof Inn Detroit - Plymouth/ Canton
+1
+Published
+Active
+
+RRI060
+Red Roof Inn Cleveland
+1
+Published
+Active
+
+RRI017
+Red Roof Inn Charleston West - Hurricane, WV
+1
+Published
+Active
+
+RRI018
+Red Roof Inn Elkhart
+1
+Published
+Active
+
+RRI019
+Red Roof Inn Canton
+1
+Published
+Active
+
+RRI020
+Red Roof Inn Lansing West - MSU
+1
+Published
+Active
+
+RRI059
+Red Roof Inn Charleston
+1
+Published
+Active
+
+RRI021
+Red Roof Inn Detroit - Troy
+1
+Published
+Active
+
+RRI056
+Red Roof Inn Memphis East
+1
+Published
+Active
+
+RRI022
+Red Roof Inn Parkersburg
+1
+Published
+Active
+
+RRI023
+Red Roof Inn Dayton North Airport
+1
+Published
+Active
+
+RRI025
+Red Roof Inn Kalamazoo West - Western Michigan U
+1
+Published
+Active
+
+RRI027
+Red Roof Inn Harrisburg - Hershey
+1
+Published
+Active
+
+RRI055
+Red Roof Inn Buffalo Hamburg
+1
+Published
+Active
+
+RRI028
+Red Roof Inn Cleveland - Independence
+1
+Published
+Active
+
+RRI029
+Red Roof Inn Lansing East – MSU
+1
+Published
+Active
+
+RRI054
+Red Roof Inn Erie
+1
+Published
+Active
+
+RRI030
+Red Roof PLUS+ Pittsburgh South - Airport
+1
+Published
+Active
+
+RRI053
+Red Roof Inn Cleveland
+1
+Published
+Active
+
+RRI031
+Red Roof Inn Milwaukee – Airport/ Oak Creek
+1
+Published
+Active
+
+RRI033
+Red Roof Inn Columbus East - Reynoldsburg
+1
+Published
+Active
+
+RRI034
+Red Roof Inn Louisville East - Hurstbourne
+1
+Published
+Active
+
+RRI048
+Red Roof Inn Washington
+1
+Published
+Active
+
+RRI035
+Red Roof Inn Rockford East – Casino District
+1
+Published
+Active
+
+RRI037
+Red Roof Inn Harrisburg North
+1
+Published
+Active
+
+RRI052
+Red Roof Inn Madison
+1
+Published
+Active
+
+RRI038
+Red Roof Inn Detroit - Farmington Hills
+1
+Published
+Active
+
+RRI046
+Red Roof Inn Toledo - Maumee
+1
+Published
+Active
+
+RRI040
+Red Roof Inn Springfield, IL
+1
+Published
+Active
+
+RRI041
+Red Roof Inn Indianapolis North - College Park
+1
+Published
+Active
+
+RRI045
+Red Roof PLUS+
+1
+Published
+Active
+
+RRI042
+Red Roof Inn Rochester - Henrietta
+1
+Published
+Active
+
+RRI043
+Red Roof Inn Benton Harbor - St Joseph
+1
+Published
+Active
+
+RRI044
+Red Roof Inn Lexington
+1
+Published
+Active
+
+RRI237
+Red Roof PLUS+ & Suites Naples Downtown-5th Ave S -- Red Roof UAT [FP - RMS]
+1
+Published
+Active
+
+RRI238
+Red Roof PLUS+ Boston - Woburn/ Burlington
+1
+Published
+Active
+
+RRI240
+Red Roof Inn San Antonio - Seaworld/ Northwest
+1
+Published
+Active
+
+RRI242
+Red Roof PLUS+ Mt Pleasant - Patriots Point
+1
+Published
+Active
+
+RRI244
+Red Roof Inn Tucson North - Marana
+1
+Published
+Active
+
+RRI245
+Red Roof Inn El Paso West
+1
+Published
+Active
+
+RRI247
+Red Roof Inn Raleigh Southwest - Cary
+1
+Published
+Active
+
+RRI248
+Red Roof PLUS+ San Antonio Downtown - Riverwalk
+1
+Published
+Active
+
+RRI250
+Red Roof Inn Phoenix North – I-17 at Bell Rd
+1
+Published
+Active
+
+RRI251
+Red Roof PLUS+ Jacksonville - Southpoint
+1
+Published
+Active
+
+RRI255
+Red Roof PLUS+ Miami Airport
+1
+Published
+Active
+
+RRI256
+Red Roof PLUS+ Raleigh Downtown – NCSU/Conv Center
+1
+Published
+Active
+
+RRI257
+Red Roof PLUS+ Gainesville
+1
+Published
+Active
+
+RRI258
+Red Roof PLUS+ Austin South
+1
+Published
+Active
+
+RRI385
+Red Roof Inn Edgewood
+1
+Published
+Active
+
+RRI261
+Red Roof PLUS+ Phoenix West
+1
+Published
+Active
+
+RRI382
+Red Roof Inn Santee
+1
+Published
+Active
+
+RRI378
+Red Roof PLUS+ Dallas Addison
+1
+Published
+Active
+
+RRI375
+Red Roof Inn Anderson
+1
+Published
+Active
+
+RRI370
+Admiralty Inn & Suites
+1
+Published
+Active
+
+RRI262
+Red Roof PLUS+ Columbus Downtown-Convention Center
+1
+Published
+Active
+
+RRI371
+Red Roof Inn Pharr - McAllen
+1
+Published
+Active
+
+RRI263
+Red Roof PLUS+ Washington DC - Rockville
+1
+Published
+Active
+
+RRI369
+Red Roof Inn Morehead
+1
+Published
+Active
+
+RRI265
+Red Roof PLUS+ Tempe - Phoenix Airport
+1
+Published
+Active
+
+RRI266
+Red Roof PLUS+ Long Island - Garden City
+1
+Published
+Active
+
+RRI274
+Red Roof PLUS+ Boston - Mansfield/ Foxboro
+1
+Published
+Active
+
+RRI285
+Red Roof Inn Slidell
+1
+Published
+Active
+
+RRI368
+Red Roof PLUS+ Danville
+1
+Published
+Active
+
+RRI367
+Red Roof Inn Knoxville North
+1
+Published
+Active
+
+RRI361
+Red Roof PLUS+ Birmingham East
+1
+Published
+Active
+
+RRI289
+Red Roof PLUS+ South Deerfield – Amherst
+1
+Published
+Active
+
+RRI293
+Red Roof Inn Mobile North - Saraland
+1
+Published
+Active
+
+RRI295
+Red Roof Inn Madison Heights, VA
+1
+Published
+Active
+
+RRI360
+Red Roof Inn Clifton Park
+1
+Published
+Active
+
+RRI296
+Red Roof Inn Cameron
+1
+Published
+Active
+RRI298
+Red Roof Inn Albuquerque - Midtown
+1
+Published
+Active
+
+RRI302
+Red Roof Inn Austin - Round Rock
+1
+Published
+Active
+
+RRI304
+Red Roof Inn Seattle Airport - SEATAC
+1
+Published
+Active
+
+RRI353
+Red Roof Inn & Suites Jackson
+1
+Published
+Active
+
+RRI305
+Red Roof PLUS+ Boston - Logan -- Red Roof QA Team [FP]
+1
+Published
+Active
+
+RRI306
+Red Roof Inn & Suites Mt Holly - McGuire AFB
+1
+Published
+Active
+
+RRI351
+Red Roof Inn Amarillo West
+1
+Published
+Active
+
+RRI350
+Red Roof Inn Morgan City
+1
+Published
+Active
+
+RRI307
+Red Roof Inn MacClenny
+1
+Published
+Active
+
+RRI308
+Red Roof Inn Memphis – Graceland/ Airport
+1
+Published
+Active
+
+RRI346
+Red Roof Inn Montgomery
+1
+Published
+Active
+
+RRI309
+Red Roof Inn Spartanburg - I-85
+1
+Published
+Active
+
+RRI343
+Red Roof PLUS+ Henderson
+1
+Published
+Active
+
+RRI310
+Red Roof PLUS+ Columbus - Worthington
+1
+Published
+Active
+
+RRI413
+Red Roof Inn Lancaster - Strasburg
+1
+Published
+Active
+
+RRI318
+Red Roof Inn & Suites DeKalb
+1
+Published
+Active
+
+RRI319
+Red Roof Inn & Suites Dickinson
+1
+Published
+Active
+
+RRI322
+Red Roof Inn Winchester – Lexington East
+1
+Published
+Active
+
+RRI415
+Red Roof Inn Neptune - Jersey Shore
+1
+Published
+Active
+
+RRI416
+Red Roof Inn Binghamton North
+1
+Published
+Active
+
+RRI418
+Red Roof PLUS+ Huntsville - Madison
+1
+Published
+Active
+
+RRI329
+Red Roof Inn & Suites Omaha - Council Bluffs
+1
+Published
+Active
+
+RRI330
+Red Roof Inn Culpeper
+1
+Published
+Active
+
+RRI332
+Red Roof Inn & Suites Philadelphia - Bellmawr
+1
+Published
+Active
+
+RRI513
+Red Roof Inn London I-75
+1
+Published
+Active
+
+RRI341
+Red Roof Inn Fayetteville
+1
+Published
+Active
+
+RRI419
+Red Roof Inn Sylacauga
+1
+Published
+Active
+
+RRI503
+Red Roof Inn Oklahoma Airport – I-40 W/Fairgrounds
+1
+Published
+Active
+
+RRI422
+Red Roof Inn Chattanooga - Lookout Mountain
+1
+Published
+Active
+
+RRI337
+Red Roof Inn & Suites Lake Orion
+1
+Published
+Active
+
+RRI496
+Red Roof Inn & Suites Scottsboro
+1
+Published
+Active
+
+RRI338
+Red Roof Inn & Suites Herkimer
+1
+Published
+Active
+
+RRI494
+Red Roof Inn & Suites Jacksonville, NC
+1
+Published
+Active
+
+RRI426
+Red Roof Inn Needles
+1
+Published
+Active
+
+RRI339
+Red Roof Inn Fort Wayne
+1
+Published
+Active
+
+RRI493
+Red Roof Inn Ft Pierce
+1
+Published
+Active
+
+RRI492
+Red Roof Inn Vermillion - U of South Dakota
+1
+Published
+Active
+
+RRI340
+Red Roof Inn Shelbyville
+1
+Published
+Active
+
+RRI429
+Red Roof Inn Yemassee
+1
+Published
+Active
+
+RRI491
+Red Roof Inn Uhrichsville
+1
+Published
+Active
+
+RRI490
+Red Roof Inn Dayton - Huber Heights
+1
+Published
+Active
+
+RRI431
+Red Roof Inn Tupelo
+1
+Published
+Active
+
+RRI333
+Red Roof Inn Chambersburg
+1
+Published
+Active
+
+RRI488
+Red Roof Inn Blythe
+1
+Published
+Active
+
+RRI334
+Red Roof Inn Van Horn
+1
+Published
+Active
+
+RRI486
+Red Roof Inn Hartford - Vernon
+1
+Published
+Active
+
+RRI432
+Red Roof Inn Dumas
+1
+Published
+Active
+
+RRI335
+Red Roof Inn Battle Creek
+1
+Published
+Active
+
+RRI336
+Red Roof Inn & Suites Danville
+1
+Published
+Active
+
+RRI433
+Red Roof Inn Ardmore
+1
+Published
+Active
+
+RRI387
+Red Roof Inn & Suites Commerce
+1
+Published
+Active
+
+RRI389
+Red Roof Inn Charlottesville
+1
+Published
+Active
+
+RRI390
+Red Roof Inn & Suites Mobile
+1
+Published
+Active
+
+RRI436
+Red Roof Inn Starkville - University
+1
+Published
+Active
+
+RRI394
+Red Roof PLUS+ Poughkeepsie
+1
+Published
+Active
+
+RRI439
+Red Roof Inn & Suites Detroit-Melvindale/ Dearborn
+1
+Published
+Active
+
+RRI395
+Red Roof Inn & Suites Stafford
+1
+Published
+Active
+
+RRI397
+Red Roof Inn Baldwin
+1
+Published
+Active
+
+RRI447
+Red Roof Inn Georgetown, IN – Louisville West
+1
+Published
+Active
+
+RRI398
+Red Roof Inn Vincennes
+1
+Published
+Active
+
+RRI450
+Red Roof Inn Augusta - Washington Road
+1
+Published
+Active
+
+RRI452
+Red Roof Inn & Suites Fayetteville - Fort Bragg
+1
+Published
+Active
+
+RRI455
+Red Roof Inn Sulphur
+1
+Published
+Active
+
+RRI461
+Red Roof Inn Texarkana
+1
+Published
+Active
+
+RRI399
+Red Roof Inn Mobile - Midtown
+1
+Published
+Active
+
+RRI463
+Red Roof Inn Jacksonville - Cruise Port
+1
+Published
+Active
+
+RRI400
+Red Roof Inn Carrollton
+1
+Published
+Active
+
+RRI401
+Red Roof Inn Hershey
+1
+Published
+Active
+
+RRI403
+Red Roof PLUS+ Huntsville
+1
+Published
+Active
+
+RRI404
+Red Roof Inn Birmingham South
+1
+Published
+Active
+
+RRI405
+Red Roof Inn Spartanburg
+1
+Published
+Active
+
+RRI406
+Red Roof Inn Osage Beach
+1
+Published
+Active
+
+RRI485
+Red Roof Inn Lumberton
+1
+Published
+Active
+
+RRI464
+Red Roof Inn Hillsville
+1
+Published
+Active
+
+RRI468
+Red Roof Inn & Suites Little Rock
+1
+Published
+Active
+
+RRI469
+Red Roof Inn & Suites Greenwood, SC
+1
+Published
+Active
+
+RRI471
+Red Roof Inn Acworth - Emerson/ LakePoint South
+1
+Published
+Active
+
+RRI473
+Red Roof Inn Hartselle
+1
+Published
+Active
+
+RRI474
+Red Roof Inn & Suites Newnan
+1
+Published
+Active
+
+RRI477
+Red Roof Inn Wildwood - Cape May/ Rio Grande
+1
+Published
+Active
+
+RRI479
+Red Roof Inn Ellenton – Bradenton NE
+1
+Published
+Active
+
+RRI481
+Red Roof Inn Scottsburg
+1
+Published
+Active
+
+RRI519
+Red Roof Inn Corpus Christi South
+1
+Published
+Active
+
+RRI529
+Red Roof Inn Clarksville
+1
+Published
+Active
+
+RRI530
+Red Roof Inn Gallup
+1
+Published
+Active
+
+RRI535
+Red Roof Inn Murfreesboro
+1
+Published
+Active
+
+RRI546
+Red Roof Inn Gaffney
+1
+Published
+Active
+
+RRI551
+Red Roof Inn Richmond, KY
+1
+Published
+Active
+
+RRI656
+Red Roof Inn Cleveland - Medina
+1
+Published
+Active
+
+RRI553
+Red Roof Inn West Memphis, AR
+1
+Published
+Active
+
+RRI658
+Red Roof Inn Bowling Green
+1
+Published
+Active
+
+RRI565
+Red Roof Inn St Louis - Troy, IL -- HK Program Team
+1
+Published
+Active
+
+RRI660
+Red Roof Inn Columbus - Grove City
+1
+Published
+Active
+
+RRI567
+Red Roof Inn Virginia Beach - Norfolk Airport
+1
+Published
+Active
+
+RRI781
+Red Roof Inn Fargo - I-94/ Medical Center
+1
+Published
+Active
+
+RRI570
+Red Roof Inn Hagerstown - Williamsport, MD
+1
+Published
+Active
+
+RRI578
+Red Roof Inn Clyde
+1
+Published
+Active
+
+RRI662
+Red Roof Inn Lancaster
+1
+Published
+Active
+
+RRI672
+Red Roof Inn Panama City
+1
+Published
+Active
+
+RRI583
+Red Roof Inn & Suites Savannah Airport
+1
+Published
+Active
+
+RRI587
+Red Roof Inn Columbus - Hebron
+1
+Published
+Active
+
+RRI588
+Red Roof PLUS+ Wichita East
+1
+Published
+Active
+
+RRI782
+Red Roof Inn Cincinnati Airport–Florence/ Erlanger
+1
+Published
+Active
+
+RRI784
+Red Roof Inn Atlanta - Suwanee/ Mall of Georgia
+1
+Published
+Active
+
+RRI788
+Red Roof PLUS+ Palm Coast
+1
+Published
+Active
+
+RRI795
+Red Roof Inn Dillon, SC
+1
+Published
+Active
+
+RRI673
+Red Roof Inn North Dallas
+1
+Published
+Active
+
+RRI589
+Red Roof Inn & Suites Pensacola East - Milton
+1
+Published
+Active
+
+RRI595
+Red Roof Inn Atlanta Southeast - Stockbridge
+1
+Published
+Active
+
+RRI679
+Red Roof Inn & Suites Macon
+1
+Published
+Active
+
+RRI602
+Red Roof Inn Indianapolis East
+1
+Published
+Active
+
+RRI604
+Red Roof Inn Chester
+1
+Published
+Active
+
+RRI796
+Red Roof Inn Batavia
+1
+Published
+Active
+
+RRI606
+Red Roof Inn & Suites Rome
+1
+Published
+Active
+
+RRI687
+Red Roof Inn York Downtown
+1
+Published
+Active
+
+RRI689
+Red Roof Inn Stockton
+1
+Published
+Active
+
+RRI607
+Red Roof Inn Springfield, OH
+1
+Published
+Active
+
+RRI608
+Red Roof Inn Buffalo, TX
+1
+Published
+Active
+
+RRI799
+Red Roof Inn Williamsburg
+1
+Published
+Active
+
+RRI691
+Red Roof Inn & Suites Beaumont
+1
+Published
+Active
+
+RRI693
+Red Roof Inn Ann Arbor
+1
+Published
+Active
+
+RRI702
+Red Roof Inn Somerset
+1
+Published
+Active
+
+RRI609
+Red Roof Inn Dallas - Mesquite/ Fair Park NE
+1
+Published
+Active
+
+RRI611
+Red Roof Inn Hutchins
+1
+Published
+Active
+
+RRI704
+Red Roof Inn & Suites Lake Charles
+1
+Published
+Active
+
+RRI615
+Red Roof Inn Annapolis
+1
+Published
+Active
+
+RRI800
+Red Roof Inn & Suites Middletown - Franklin
+1
+Published
+Active
+
+RRI619
+Red Roof Inn Temple
+1
+Published
+Active
+
+RRI620
+Red Roof Inn Hendersonville
+1
+Published
+Active
+
+RRI622
+Red Roof Inn Locust Grove
+1
+Published
+Active
+
+RRI623
+Red Roof Inn Columbia, SC Airport
+1
+Published
+Active
+
+RRI628
+Red Roof Inn & Suites Dover Downtown
+1
+Published
+Active
+
+RRI629
+Red Roof Inn South Bend - Mishawaka
+1
+Published
+Active
+
+RRI630
+Red Roof Inn Winchester, VA
+1
+Published
+Active
+
+RRI710
+Red Roof Inn Kingsland
+1
+Published
+Active
+
+RRI632
+Red Roof Inn San Marcos
+1
+Published
+Active
+
+RRI803
+Red Roof Inn Crossville
+1
+Published
+Active
+
+RRI804
+Red Roof Inn & Suites Pigeon Forge - Parkway
+1
+Published
+Active
+
+RRI805
+Red Roof PLUS+ & Suites Malone
+1
+Published
+Active
+
+RRI713
+Red Roof Inn & Suites Clinton
+1
+Published
+Active
+
+RRI715
+Red Roof Inn Hardeeville
+1
+Published
+Active
+
+RRI720
+Red Roof Inn Columbus
+1
+Published
+Active
+
+RRI721
+Red Roof Inn Cartersville
+1
+Published
+Active
+
+RRI634
+Red Roof Inn Roanoke Rapids
+1
+Published
+Active
+
+RRI722
+Red Roof Inn Etowah
+1
+Published
+Active
+
+RRI635
+Red Roof Inn Jackson, OH
+1
+Published
+Active
+
+RRI806
+Red Roof PLUS+ & Suites Chattanooga - Downtown
+1
+Published
+Active
+
+RRI725
+Red Roof Inn Kingsport
+1
+Published
+Active
+
+RRI808
+Red Roof Inn Paducah
+1
+Published
+Active
+
+RRI728
+Red Roof Inn Charlotte
+1
+Published
+Active
+
+RRI734
+Red Roof Inn Pensacola Fairgrounds
+1
+Published
+Active
+
+RRI735
+Red Roof Inn & Suites Columbus - West Broad
+1
+Published
+Active
+
+RRI809
+Red Roof Inn Marietta
+1
+Published
+Active
+
+RRI736
+Red Roof Inn Hot Springs
+1
+Published
+Active
+
+RRI739
+Red Roof Inn & Suites Hermitage
+1
+Published
+Active
+
+RRI810
+Red Roof PLUS+ & Suites Guilford
+1
+Published
+Active
+
+RRI811
+Red Roof Inn Houston East – I-10
+1
+Published
+Active
+
+RRI743
+Red Roof Inn Knoxville Central
+1
+Published
+Active
+
+RRI747
+Red Roof Inn & Suites Knoxville East
+1
+Published
+Active
+
+RRI812
+Red Roof Inn & Suites Newark - University
+1
+Published
+Active
+
+RRI750
+Red Roof Inn Bloomington - Normal/ University
+1
+Published
+Active
+
+RRI816
+Red Roof Inn Rock Hill
+1
+Published
+Active
+
+RRI751
+Red Roof Inn Cookeville - Tennessee Tech
+1
+Published
+Active
+
+RRI637
+Red Roof Inn Leesburg, VA
+1
+Published
+Active
+
+RRI638
+Red Roof Inn Ocala
+1
+Published
+Active
+
+RRI643
+Red Roof Inn Sandusky - Milan
+1
+Published
+Active
+
+RRI650
+Red Roof Inn Indianapolis - Greenwood
+1
+Published
+Active
+
+RRI651
+Red Roof Inn Columbus – Taylorsville/ Edinburgh
+1
+Published
+Active
+
+RRI820
+Red Roof Inn Arlington - Entertainment District
+1
+Published
+Active
+
+RRI822
+Red Roof Inn & Suites Wapakoneta
+1
+Published
+Active
+
+RRI753
+Red Roof Inn Denver
+1
+Published
+Active
+
+RRI759
+Red Roof Inn Gurnee - Waukegan
+1
+Published
+Active
+
+RRI881
+Red Roof Inn & Suites Statesboro - University
+1
+Published
+Active
+
+RRI825
+Red Roof Inn & Suites Cave City
+1
+Published
+Active
+
+RRI760
+Red Roof Inn Palmdale - Lancaster
+1
+Published
+Active
+
+RRI766
+Red Roof Inn Orlando South
+1
+Published
+Active
+
+RRI826
+Red Roof Inn Newport News - Yorktown
+1
+Published
+Active
+
+RRI769
+Red Roof Inn Columbus Northeast - Westerville
+1
+Published
+Active
+
+RRI770
+Red Roof Inn & Suites Cincinnati North
+1
+Published
+Active
+
+RRI827
+Red Roof Inn Indianapolis - Castleton
+1
+Published
+Active
+
+RRI888
+Red Roof Inn Caryville
+1
+Published
+Active
+
+RRI773
+Red Roof Inn & Suites Monterey
+1
+Published
+Active
+
+RRI836
+Red Roof Inn Dumfries - Quantico
+1
+Published
+Active
+
+RRI774
+Red Roof Inn Lompoc
+1
+Published
+Active
+
+RRI777
+Red Roof Inn Nashville
+1
+Published
+Active
+
+RRI840
+Red Roof Inn & Suites Indianapolis Airport
+1
+Published
+Active
+
+RRI890
+Red Roof Inn Fredericksburg South
+1
+Published
+Active
+
+RRI778
+Red Roof Inn Dalton
+1
+Published
+Active
+
+RRI844
+Red Roof Inn & Suites Cleveland, TN
+1
+Published
+Active
+
+RRI845
+Red Roof Inn Allentown South
+1
+Published
+Active
+
+RRI653
+Red Roof Inn Wilmington, NC
+1
+Published
+Active
+
+RRI854
+Red Roof PLUS+ Jamaica, NY - JFK Airport
+1
+Published
+Active
+
+RRI901
+Red Roof Inn & Suites Corbin
+1
+Published
+Active
+
+RRI857
+Red Roof Inn Hartford - New Britain
+1
+Published
+Active
+
+RRI879
+Red Roof PLUS+ & Suites Opelika
+1
+Published
+Active
+
+rri902
+Red Roof Inn Franklin, KY
+1
+Published
+Active
+
+RRI859
+Red Roof Inn Forsyth
+1
+Published
+Active
+
+RRI907
+Red Roof PLUS+ Tuscaloosa - University
+1
+Published
+Active
+
+RRI869
+Red Roof Inn Kenly – I-95
+1
+Published
+Active
+
+RRI862
+Red Roof Inn Hayward
+1
+Published
+Active
+RRI919
+Red Roof Inn Grand Junction
+1
+Published
+Active
+
+RRI860
+Red Roof Inn Sumter
+1
+Published
+Active
+
+RRI911
+Red Roof Inn Houston - Willowbrook
+1
+Published
+Active
+
+RRI868
+Red Roof Inn & Suites Pensacola - NAS Corry
+1
+Published
+Active
+
+RRI867
+Red Roof Inn & Suites Biloxi - Ocean Springs
+1
+Published
+Active
+
+RRI865
+Red Roof Inn Cortland
+1
+Published
+Active
+
+RRI866
+Red Roof Inn Tampa Bay - St Petersburg
+1
+Published
+Active
+
+RRI926
+Red Roof PLUS+ St Augustine
+1
+Published
+Active
+
+RRI928
+Red Roof Inn Dry Ridge
+1
+Published
+Active
+
+RRI929
+Red Roof Inn & Suites Hazleton
+1
+Published
+Active
+
+RRI937
+Red Roof Inn Morton Grove
+1
+Published
+Active
+
+RRI938
+Red Roof Inn Richmond, IN
+1
+Published
+Active
+
+RRI939
+Red Roof Inn Abingdon
+1
+Published
+Active
+
+RRI940
+Red Roof Inn & Suites Calhoun
+1
+Published
+Active
+
+RRI943
+Red Roof Inn Wheelersburg
+1
+Published
+Active
+
+RRI946
+Red Roof Inn Gulf Shores
+1
+Published
+Active
+
+RRI947
+Red Roof Inn Atlanta - Kennesaw State University
+1
+Published
+Active
+
+RRI950
+Red Roof PLUS+ Fort Worth - Burleson
+1
+Published
+Active
+
+RRI951
+Red Roof Inn Fredericksburg North
+1
+Published
+Active
+
+RRI952
+Red Roof Inn Chicago - Alsip
+1
+Published
+Active
+
+RRI956
+Red Roof Inn & Suites Longview
+1
+Published
+Active
+
+RRI1218
+Red Roof PLUS+ & Suites Richmond, BC -- Red Roof UAT [Canada]
+1
+Published
+Active
+
+RRI960
+Red Roof Inn Saginaw - Frankenmuth
+1
+Published
+Active
+
+RRI1099
+Red Roof Inn Cullman
+1
+Published
+Active
+
+rri1219
+Red Roof Inn Staunton
+1
+Published
+Active
+
+RRI962
+Red Roof Inn Des Moines
+1
+Published
+Active
+
+RRI968
+Red Roof Inn Conroe North - Willis
+1
+Published
+Active
+
+RRI969
+Red Roof Inn Freehold
+1
+Published
+Active
+
+RRI1220
+Red Roof Inn Griffin
+1
+Published
+Active
+
+RRI1100
+Red Roof Inn Cadiz
+1
+Published
+Active
+
+RRI970
+Red Roof Inn Muscle Shoals
+1
+Published
+Active
+
+RRI971
+Red Roof Inn Bishopville
+1
+Published
+Active
+
+RRI1225
+Red Roof Inn Lancaster, TX
+1
+Published
+Active
+
+HTS1038
+HomeTowne Studios Orlando
+1
+Published
+Active
+
+HTS1040
+HomeTowne Studios Houston
+1
+Published
+Active
+
+RRI1227
+Red Roof Inn Dahlgren - Naval Base
+1
+Published
+Active
+
+HTS1041
+HomeTowne Studios Houston
+1
+Published
+Active
+
+RRI973
+Red Roof Inn Meriden
+1
+Published
+Active
+
+RRI1229
+Red Roof Inn & Suites Galloway
+1
+Published
+Active
+
+HTS1042
+HomeTowne Studios Dallas - Mesquite
+1
+Published
+Active
+
+RRI975
+Red Roof Inn & Suites Houston - Hobby Airport
+1
+Published
+Active
+
+RRI1231
+Red Roof Inn & Suites Newport – Middletown, RI
+1
+Published
+Active
+
+RRI976
+Red Roof Inn Springfield, MO
+1
+Published
+Active
+
+RRI1101
+Red Roof Inn Moss Point
+1
+Published
+Active
+
+RRI1233
+Red Roof Inn Corpus Christi North - Near Downtown
+1
+Published
+Active
+
+RRI983
+Red Roof Inn Bristol
+1
+Published
+Active
+
+RRI1234
+Red Roof Inn Greenville, NC
+1
+Published
+Active
+
+RRI1104
+Red Roof Inn Greensburg
+1
+Published
+Active
+
+RRI985
+Red Roof Inn Valdosta - University
+1
+Published
+Active
+
+RRI1107
+Red Roof Inn Dayton - Moraine/U of Dayton
+1
+Published
+Active
+
+HTS1195
+HomeTowne Studios Tampa – Airport
+1
+Published
+Active
+
+RRI1108
+Red Roof Inn West Point
+1
+Published
+Active
+
+RRI986
+Red Roof Inn Gulfport - Biloxi Airport
+1
+Published
+Active
+
+RRI1198
+Red Roof PLUS+ Galveston - Beachfront
+1
+Published
+Active
+
+RRI1109
+Red Roof Inn Houston North - FM 1960 & I-45
+1
+Published
+Active
+
+RRI1199
+Red Roof Inn & Suites Cornelius – Lake Norman
+1
+Published
+Active
+
+RRI1200
+Red Roof Inn Sutton
+1
+Published
+Active
+
+RRI995
+Red Roof Inn Marion, IN
+1
+Published
+Active
+
+RRI996
+Red Roof Inn Columbus, MS
+1
+Published
+Active
+
+RRI1201
+Red Roof Inn Niagara Falls
+1
+Published
+Active
+
+RRI999
+Red Roof PLUS+ & Suites Houston - IAH Airport SW
+1
+Published
+Active
+
+RRI1206
+Red Roof PLUS+ & Suites Savannah - I-95
+1
+Published
+Active
+
+RRI1000
+Red Roof Inn Auburn
+1
+Published
+Active
+
+RRI1110
+Red Roof Inn Rochester – Airport
+1
+Published
+Active
+
+RRI1003
+Red Roof Inn Prattville
+1
+Published
+Active
+
+RRI1209
+Red Roof Inn Savannah - Richmond Hill/ I-95
+1
+Published
+Active
+
+RRI1009
+Red Roof Inn Warrenton
+1
+Published
+Active
+
+RRI1016
+Red Roof Inn Plano
+1
+Published
+Active
+
+HTS1018
+HomeTowne Studios Spartanburg - Asheville Highway
+1
+Published
+Active
+
+RRI1212
+Red Roof PLUS+ Newark Liberty Airport - Carteret
+1
+Published
+Active
+
+RRI1111
+Red Roof Inn & Suites Euless-DFW Airport Southwest
+1
+Published
+Active
+
+RRI1213
+Red Roof Inn & Suites Newburgh – Stewart Airport/ West Point
+1
+Published
+Active
+
+RRI1115
+Red Roof Inn Tucson Downtown – University
+1
+Published
+Active
+
+RRI1116
+Red Roof Inn Gadsden
+1
+Published
+Active
+
+HTS1043
+HomeTowne Studios Austin
+1
+Published
+Active
+
+HTS1117
+HomeTowne Studios Bordentown - McGuire AFB
+1
+Published
+Active
+
+RRI1118
+Red Roof Inn Bordentown - McGuire AFB
+1
+Published
+Active
+
+HTS1044
+HomeTowne Studios Dallas
+1
+Published
+Active
+
+HTS1021
+HomeTowne Studios Philadelphia - Maple Shade, NJ
+1
+Published
+Active
+
+HTS1047
+HomeTowne Studios Salem
+1
+Published
+Active
+
+RRI1122
+Red Roof Inn Redding
+1
+Published
+Active
+
+HTS1048
+HomeTowne Studios Seattle - Kent/ Des Moines
+1
+Published
+Active
+
+HTS1025
+HomeTowne Studios St. Louis - Airport/ N Lindbergh
+1
+Published
+Active
+
+HTS1049
+HomeTowne Studios Tacoma
+1
+Published
+Active
+
+RRI1129
+Red Roof Inn Petersburg - Fort Lee
+1
+Published
+Active
+
+HTS1051
+HomeTowne Studios Colorado Springs
+1
+Published
+Active
+
+HTS1026
+HomeTowne Studios Chicago - Waukegan
+1
+Published
+Active
+
+HTS1027
+HomeTowne Studios Spokane - Valley
+1
+Published
+Active
+
+RRI1215
+Red Roof Inn St George, SC
+1
+Published
+Active
+
+HTS1028
+HomeTowne Studios Eugene - Springfield
+1
+Published
+Active
+
+HTS1235
+HomeTowne Studios Montgomery – Midtown
+1
+Published
+Active
+
+HTS1030
+HomeTowne Studios Denver - Glendale/ Cherry Creek
+1
+Published
+Active
+
+HTS1239
+HomeTowne Studios Augusta
+1
+Published
+Active
+
+HTS1031
+HomeTowne Studios Lake Charles - Sulphur
+1
+Published
+Active
+
+HTS1032
+HomeTowne Studios Atlanta NE - Norcross South
+1
+Published
+Active
+
+RRI1240
+Red Roof Inn Port Allen
+1
+Published
+Active
+
+HTS1033
+HomeTowne Studios Atlanta NE - Downtown Norcross
+1
+Published
+Active
+
+RRI1241
+Red Roof Inn Fairfield
+1
+Published
+Active
+
+HTS1052
+HomeTowne Studios Denver
+1
+Published
+Active
+
+RRI1244
+Red Roof Inn & Suites Athens, AL
+1
+Published
+Active
+
+HTS1053
+HomeTowne Studios Denver - Airport/ Aurora
+1
+Published
+Active
+
+RRI1250
+Red Roof Inn Bourbonnais
+1
+Published
+Active
+
+HTS1054
+HomeTowne Studios Fresno
+1
+Published
+Active
+
+HTS1056
+HomeTowne Studios Atlanta
+1
+Published
+Active
+
+RRI1252
+Red Roof Inn Baltimore
+1
+Published
+Active
+
+HTS1057
+HomeTowne Studios Dallas
+1
+Published
+Active
+
+RRI1253
+Red Roof Inn Savannah - Southside/Midtown
+1
+Published
+Active
+
+HTS1060
+HomeTowne Studios Columbus
+1
+Published
+Active
+
+HTS1063
+HomeTowne Studios Gainesville
+1
+Published
+Active
+
+RRI1255
+Red Roof Inn Perry
+1
+Published
+Active
+
+HTS1064
+HomeTowne Studios Covington
+1
+Published
+Active
+
+HTS1034
+HomeTowne Studios Atlanta NE - Norcross South -- Red Roof UAT
+1
+Published
+Active
+
+RRI1130
+Red Roof Inn & Suites Houma, LA
+1
+Published
+Active
+
+HTS1066
+HomeTowne Studios Orlando
+1
+Published
+Active
+
+HTS1067
+HomeTowne Studios Orlando - Casselberry
+1
+Published
+Active
+
+RRI1131
+Red Roof PLUS+ Hammond
+1
+Published
+Active
+
+HTS1036
+HomeTowne Studios Fort Lauderdale
+1
+Published
+Active
+
+RRI1133
+Red Roof Inn Bay Minette
+1
+Published
+Active
+
+RRI1257
+Red Roof Inn Somerset, PA
+1
+Published
+Active
+
+HTS1068
+HomeTowne Studios Atlanta - Chamblee
+1
+Published
+Active
+
+RRI1134
+Red Roof Inn & Suites Austin East - Manor
+1
+Published
+Active
+
+HTS1072
+HomeTowne Studios & Suites Bentonville
+1
+Published
+Active
+
+RRI1135
+Red Roof Inn Columbia, TN
+1
+Published
+Active
+
+RRI1098
+Red Roof Inn Marion, VA
+1
+Published
+Active
+
+RRI1073
+Red Roof Inn St George
+1
+Published
+Active
+
+RRI1261
+Red Roof PLUS+ & Suites Tampa
+1
+Published
+Active
+
+RRI1096
+Red Roof Inn & Suites Wilson
+1
+Published
+Active
+
+RRI1076
+Red Roof Inn Dandridge
+1
+Published
+Active
+
+RRI1262
+Red Roof Inn Branson
+1
+Published
+Active
+
+RRI1077
+Red Roof Inn & Suites San Angelo
+1
+Published
+Active
+
+RRI1095
+Red Roof Inn Dothan
+1
+Published
+Active
+
+RRI1094
+Red Roof Inn & Suites Denton
+1
+Published
+Active
+
+RRI1078
+Admiralty Inn & Suites
+1
+Published
+Active
+
+HTS1263
+HomeTowne Studios Newport News – Hampton West
+1
+Published
+Active
+
+HTS1092
+HomeTowne Studios Denver - Lakewood West
+1
+Published
+Active
+
+RRI1090
+Red Roof Inn Raleigh North-Crabtree Mall/Lenovo Center
+1
+Published
+Active
+
+RRI1264
+Red Roof Inn Darien - I-95/ North Brunswick
+1
+Published
+Active
+
+RRI1087
+Red Roof Inn New Orleans - Westbank
+1
+Published
+Active
+
+HTS1265
+HomeTowne Studios Denver, PA
+1
+Published
+Active
+
+RRI1086
+Red Roof Inn Defuniak Springs
+1
+Published
+Active
+
+HTS1266
+HomeTowne Studios Battle Creek
+1
+Published
+Active
+
+RRI1268
+Red Roof Inn & Suites Chestertown
+1
+Published
+Active
+
+RRI1271
+Red Roof Inn Tallahassee East
+1
+Published
+Active
+
+RRI1187
+Red Roof Inn & Suites Wilmington - New Castle
+1
+Published
+Active
+
+RRI1080
+Red Roof Inn Ashtabula - Austinburg
+1
+Published
+Active
+
+RRI1081
+Red Roof PLUS+ & Suites Vicksburg
+1
+Published
+Active
+
+HTS1186
+HomeTowne Studios Wilmington - New Castle
+1
+Published
+Active
+
+RRI1082
+Red Roof PLUS+ & Suites Atlanta Airport South
+1
+Published
+Active
+
+RRI1083
+Red Roof Inn Baytown
+1
+Published
+Active
+
+RRI1084
+Red Roof Inn Perrysburg
+1
+Published
+Active
+
+HTS1085
+HomeTowne Studios Orlando South
+1
+Published
+Active
+
+RRI1184
+Red Roof Inn Monroe
+1
+Published
+Active
+
+RRI1180
+Red Roof Inn Lewisville
+1
+Published
+Active
+
+RRI1179
+Red Roof Inn Martinsburg
+1
+Published
+Active
+
+RRI1143
+Red Roof Inn Norfolk - Portsmouth
+1
+Published
+Active
+
+RRI1144
+Red Roof Inn & Suites Swansea
+1
+Published
+Active
+
+RRI1153
+Red Roof Inn San Antonio E - Frost Bank Center
+1
+Published
+Active
+
+RRI1154
+Red Roof Inn Fort Worth South
+1
+Published
+Active
+
+HTS1349
+HomeTowne Studios Prattville
+1
+Published
+Active
+
+RRI1350
+Red Roof Inn Madisonville
+1
+Published
+Active
+
+RRI1158
+Red Roof Inn Monteagle - I-24
+1
+Published
+Active
+
+RRI1469
+Red Roof Inn & Suites Marysville
+1
+Published
+Active
+
+RRI1351
+Red Roof Inn Painted Post
+1
+Published
+Active
+
+RRI1160
+Red Roof PLUS+ & Suites Birmingham - Bessemer
+1
+Published
+Active
+
+HTS1352
+HomeTowne Studios Painted Post
+1
+Published
+Active
+
+RRI1470
+Red Roof Inn Canton, TX
+1
+Published
+Active
+
+RRI1353
+Red Roof Inn & Suites Midland
+1
+Published
+Active
+
+RRI1475
+Red Roof Inn Sanford
+1
+Published
+Active
+
+RRI1476
+Red Roof Inn Raleigh Northeast - Downtown
+1
+Published
+Active
+
+RRI1478
+Red Roof Inn Wildwood, FL - The Villages
+1
+Published
+Active
+
+HTS1357
+HomeTowne Studios Princeton – Ewing/ Lawrenceville
+1
+Published
+Active
+
+HTS1482
+HomeTowne Studios Danville, PA
+1
+Published
+Active
+
+HTS1360
+HomeTowne Studios Florence
+1
+Published
+Active
+
+RRI1363
+Red Roof Inn Alexandria
+1
+Published
+Active
+
+RRI1483
+Red Roof Inn Dunn
+1
+Published
+Active
+
+RRI1166
+Red Roof Inn Kenner – New Orleans Airport NE
+1
+Published
+Active
+
+RRI1364
+Red Roof Inn Charleston
+1
+Published
+Active
+
+RRI1366
+Red Roof Inn & Conference Center Chicago
+1
+Published
+Active
+
+RRI1490
+Red Roof Inn Ridgecrest
+1
+Published
+Active
+
+RRI1167
+Red Roof Inn Phoenix - Midtown
+1
+Published
+Active
+
+RRI1168
+Red Roof Inn Berea
+1
+Published
+Active
+
+HTS1491
+HomeTowne Studios Ridgecrest
+1
+Published
+Active
+
+RRI1496
+Red Roof Inn Panama City Beach
+1
+Published
+Active
+
+RRI1499
+Red Roof Inn Manchester
+1
+Published
+Active
+
+RRI1368
+Red Roof Inn & Suites Irving
+1
+Published
+Active
+
+RRI1275
+Red Roof Inn Pecos
+1
+Published
+Active
+
+RRI1502
+Red Roof Inn Kissimmee
+1
+Published
+Active
+
+RRI1371
+Red Roof Inn & Suites Newport News
+1
+Published
+Active
+
+RRI1277
+Red Roof Inn New Stanton
+1
+Published
+Active
+
+RRI1372
+Red Roof Inn Charlotte - Airport
+1
+Published
+Active
+
+RRI1278
+Red Roof Inn & Conference Center McKinney
+1
+Published
+Active
+
+HTS1506
+HomeTowne Studios & Suites Greensboro
+1
+Published
+Active
+
+RRI1374
+Red Roof Inn Washington
+1
+Published
+Active
+
+HTS1508
+HomeTowne Studios Chantilly
+1
+Published
+Active
+
+RRI1280
+Red Roof Inn Haltom City
+1
+Published
+Active
+
+RRI1171
+Red Roof Inn Washington, DC
+1
+Published
+Active
+
+RRI1511
+Red Roof Inn Richmond, VA
+1
+Published
+Active
+
+RRI1173
+Red Roof Inn Norwich
+1
+Published
+Active
+
+RRI1377
+Red Roof Inn Copiague
+1
+Published
+Active
+
+RRI1382
+Red Roof Inn Los Angeles – Bellflower
+1
+Published
+Active
+RRI1281
+Red Roof Inn Houston – Jersey Village
+1
+Published
+Active
+
+RRI1386
+Red Roof Inn Mansfield
+1
+Published
+Active
+
+RRI1512
+Red Roof Inn Tucson – Vail
+1
+Published
+Active
+
+RRI1388
+Red Roof Inn Jasper
+1
+Published
+Active
+
+HTS1284
+HomeTowne Studios & Conference Center Cortland -- Red Roof UAT
+1
+Published
+Active
+
+RRI1286
+Red Roof Inn Georgetown, KY
+1
+Published
+Active
+
+HTS1518
+Hometowne Studios Buffalo - Niagara Airport
+1
+Published
+Active
+
+HTS1287
+HomeTowne Studios Georgetown, KY
+1
+Published
+Active
+
+RRI1389
+Red Roof Inn Kimball
+1
+Published
+Active
+
+RRI1288
+Red Roof Inn LaGrange -- Red Roof UAT
+1
+Published
+Active
+
+RRI1174
+Red Roof Inn & Suites Carrollton, GA–West Georgia
+1
+Published
+Active
+
+RRI1289
+Red Roof Inn Tifton
+1
+Published
+Active
+
+RRI1390
+Red Roof Inn Perryville
+1
+Published
+Active
+
+RRI1520
+Red Roof Inn Ames
+1
+Published
+Active
+
+RRI1176
+Red Roof Inn Crestview
+1
+Published
+Active
+
+RRI1290
+Red Roof Inn Baltimore South - Glen Burnie
+1
+Published
+Active
+
+RRI1522
+Red Roof Inn Winston-Salem
+1
+Published
+Active
+
+RRI1177
+Red Roof Inn Fort Worth – Saginaw
+1
+Published
+Active
+
+RRI1295
+Red Roof Inn & Suites Thomasville
+1
+Published
+Active
+
+HTS1298
+HomeTowne Studios San Antonio - Seaworld/Northwest
+1
+Published
+Active
+
+RRI1529
+Red Roof Inn Media
+1
+Published
+Active
+
+HTS1299
+HomeTowne Studios Orange, TX
+1
+Published
+Active
+
+RRI1301
+Red Roof Inn Lawrenceburg
+1
+Published
+Active
+
+RRI1315
+Red Roof Inn Lenoir
+1
+Published
+Active
+
+RRI1316
+Red Roof Inn Rocky Mount - Battleboro
+1
+Published
+Active
+
+RRI1318
+Red Roof Inn Parsippany
+1
+Published
+Active
+
+RRI1319
+Red Roof Inn & Suites Lexington - Hamburg
+1
+Published
+Active
+
+RRI1531
+Red Roof Inn La Porte
+1
+Published
+Active
+
+HTS1320
+HomeTowne Studios East Lansing - Okemos
+1
+Published
+Active
+
+RRI1534
+Red Roof Inn Charlestown
+1
+Published
+Active
+
+RRI1537
+Red Roof Inn Queensbury
+1
+Published
+Active
+
+RRI1323
+Red Roof Inn Fort Worth West
+1
+Published
+Active
+
+RRI1539
+Red Roof Inn & Suites Tomah
+1
+Published
+Active
+
+RRI1546
+Red Roof PLUS+ Brooklyn - Flatbush Ave
+1
+Published
+Active
+
+RRI1419
+Red Roof Inn Auburn Hills
+1
+Published
+Active
+
+RRI1327
+Red Roof Inn Reading
+1
+Published
+Active
+
+RRI1547
+Red Roof PLUS+ Brooklyn - 3rd Ave
+1
+Published
+Active
+
+HTS1420
+HomeTowne Studios Auburn Hills
+1
+Published
+Active
+
+RRI1328
+Red Roof Inn Pittsburgh - McKnight Rd
+1
+Published
+Active
+
+HTS1329
+Hometowne Studios & Suites Washington
+1
+Published
+Active
+
+RRI1331
+Red Roof Inn & Suites Wilkesboro
+1
+Published
+Active
+
+RRI1332
+Red Roof Inn Weedsport
+1
+Published
+Active
+
+RRI1422
+Red Roof Inn Carson - Wilmington, CA
+1
+Published
+Active
+
+RRI1548
+Red Roof Inn Miami, AZ
+1
+Published
+Active
+
+RRI1333
+Red Roof Inn College Station
+1
+Published
+Active
+
+RRI1423
+Red Roof Inn Huntsville, AL
+1
+Published
+Active
+
+RRI1334
+Red Roof Inn Walton - Richwood
+1
+Published
+Active
+
+RRI1425
+Red Roof Inn La Marque
+1
+Published
+Active
+
+RRI1337
+Red Roof Inn Vero Beach - I-95
+1
+Published
+Active
+
+HTS1338
+HomeTowne Studios Vero Beach - I-95
+1
+Published
+Active
+
+RRI1426
+Red Roof Inn & Suites Jackson – Richland
+1
+Published
+Active
+
+RRI1339
+Red Roof Inn Greencastle South – Cloverdale
+1
+Published
+Active
+
+RRI1556
+Red Roof Inn Wytheville
+1
+Published
+Active
+
+RRI1341
+Red Roof Inn Suffolk
+1
+Published
+Active
+
+HTS1561
+HomeTowne Studios Athens, TN
+1
+Published
+Active
+
+RRI1343
+Red Roof Inn & Suites Monroe, NC
+1
+Published
+Active
+
+HTS1345
+HomeTowne Studios Egg Harbor–Atlantic City Airport
+1
+Published
+Active
+
+RRI1563
+Red Roof Inn Kokomo
+1
+Published
+Active
+
+RRI1346
+Red Roof Inn Jacksonville, AL
+1
+Published
+Active
+
+RRI1427
+Red Roof Inn Rockingham
+1
+Published
+Active
+
+RRI1566
+Red Roof Inn & Suites Hammond, IN
+1
+Published
+Active
+
+RRI1428
+Red Roof Inn Johnstown
+1
+Published
+Active
+
+RRI1430
+Red Roof Inn Franklin, TN
+1
+Published
+Active
+
+RRI1567
+Red Roof Inn Radcliff
+1
+Published
+Active
+
+RRI1569
+Red Roof Inn Hampton Coliseum
+1
+Published
+Active
+
+HTS1432
+HomeTowne Studios Hagerstown - Williamsport, MD
+1
+Published
+Active
+
+RRI1571
+Red Roof Inn Leeds
+1
+Published
+Active
+
+RRI1433
+Red Roof Inn Gastonia
+1
+Published
+Active
+
+RRI1580
+Red Roof Inn & Suites Hinesville
+1
+Published
+Active
+
+RRI1418
+Red Roof Inn & Suites Duncan
+1
+Published
+Active
+
+RRI1416
+Red Roof Inn & Suites Middleborough
+1
+Published
+Active
+
+RRI1413
+Red Roof Inn Atlanta Airport NE - Conley
+1
+Published
+Active
+
+HTS1411
+HomeTowne Studios Amarillo West
+1
+Published
+Active
+
+HTS1408
+HomeTowne Studios Richmond, VA – W Broad St
+1
+Published
+Active
+
+RRI1407
+Red Roof Inn Richmond, VA – W Broad St
+1
+Published
+Active
+
+HTS1406
+HomeTowne Studios Richmond - Airport/ Sandston
+1
+Published
+Active
+
+HTS1434
+HomeTowne Studios Greenville
+1
+Published
+Active
+
+RRI1435
+Red Roof Inn Del Rio
+1
+Published
+Active
+
+RRI1279
+Red Roof Inn & Suites Bloomsburg – Mifflinville
+1
+Published
+Active
+
+RRI1436
+Red Roof Inn Yuba City Bonanza – Marysville
+1
+Published
+Active
+
+RRI1460
+Red Roof Inn & Suites Sulphur Springs
+1
+Published
+Active
+
+RRI1458
+Red Roof Inn Cambridge, OH
+1
+Published
+Active
+
+HTS1455
+HomeTowne Studios Lancaster
+1
+Published
+Active
+
+RRI1454
+Red Roof Inn Doswell - Kings Dominion
+1
+Published
+Active
+
+RRI1453
+Red Roof Inn Baton Rouge
+1
+Published
+Active
+
+RRI1450
+Red Roof Inn Hope
+1
+Published
+Active
+
+HTS1445
+HomeTowne Studios Southfield
+1
+Published
+Active
+
+RRI1446
+Red Roof Inn & Suites Clinton, MS
+1
+Published
+Active
+
+RRI1444
+Red Roof Inn Southfield
+1
+Published
+Active
+
+HTS1437
+HomeTowne Studios Yuba City Bonanza – Marysville
+1
+Published
+Active
+
+HTS1443
+HomeTowne Studios LaGrange
+1
+Published
+Active
+
+HTS1439
+HomeTowne Studios Flint
+1
+Published
+Active
+
+RRI1438
+Red Roof Inn Flint
+1
+Published
+Active
+
+RRI1405
+Red Roof Inn Richmond - Airport/ Sandston
+1
+Published
+Active
+
+RRI1404
+Red Roof Inn Stroudsburg
+1
+Published
+Active
+
+RRI1403
+Red Roof Inn & Suites Vineland - Buena
+1
+Published
+Active
+
+RRI1397
+Red Roof Inn Savannah North I-95 – Port Wentworth
+1
+Published
+Active
+
+RRI1461
+Red Roof Inn Byron
+1
+Published
+Active
+
+RRI1395
+Red Roof PLUS+ Belleville
+1
+Published
+Active
+
+HTS1462
+HomeTowne Studios Huntsville - Madison
+1
+Published
+Active
+
+HTS1394
+HomeTowne Studios Mystic - New London
+1
+Published
+Active
+
+RRI1464
+Red Roof Inn Stafford, TX
+1
+Published
+Active
+
+RRI1393
+Red Roof Inn Nacogdoches
+1
+Published
+Active
+
+RRI1392
+Red Roof PLUS+ & Suites Virginia Beach – Seaside
+1
+Published
+Active
+
+RRI1272
+Red Roof Inn Terrell
+1
+Published
+Active
+
+TRC1415
+SPOT X Hotel Tampa - Wesley Chapel by The Red Collection
+1
+Published
+Active
+
+TRC1417
+The Mariner Resort Cape Cod by The Red Collection
+1
+Published
+Active
+
+RRI905
+Red Roof Inn Forrest City
+1
+Published
+Active
+
+RRI891
+Red Roof Inn Meridian
+1
+Published
+Active
+
+RRI819
+Red Roof Inn & Suites Oxford
+1
+Published
+Active
+
+RRI863
+Red Roof Inn Chipley
+1
+Published
+Active
+
+RRI909
+Red Roof Inn & Suites Houston - Humble/IAH Airport
+1
+Published
+Active
+
+HTS1044
+HomeTowne Studios Dallas - Irving -- HK Product Team
+3
+Published
+Active
+
+HTS1060
+HomeTowne Studios Columbus -- Red Roof UAT
+4
+Published
+Active
+
+HTS1066
+HomeTowne Studios & Suites Charlotte - Concord -- HK Program Team
+5
+Published
+Active
+
+HTS1072
+HomeTowne Studios & Suites Bentonville -- Red Roof UAT
+6
+Published
+Active
+
+RRI1082
+Red Roof PLUS & Suites Atlanta Airport South -- Red Roof Training Team
+7
+Published
+Active
+
+RRI121
+Red Roof PLUS+ Columbus-Ohio State University OSU -- HK Product Team
+8
+Published
+Active
+
+RRI387
+Red Roof Inn & Suites Commerce - Athens [OTAs]
+9
+Published
+Active
+
+RRI673
+Red Roof Inn North Dallas - Park Central - HK Program Team
+10
+Published
+Active
+
+TRC1210
+SPOT X Hotel Orlando/Intl Dr by The Red Collection -- [RMS]
+11
+Published
+Active
