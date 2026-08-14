@@ -30,6 +30,8 @@ the actual asset URL to write.** This project never uploads images — DAM asset
 | `POST /api/MiblockApi/CreateComponentRecord` (same host) | Create a **new** record. **Undocumented** — only an auto-generated Swagger stub exists. Payload shape in `buildRoomTypeRecordPayload()` was reverse-engineered from a real existing record's JSON shape. Top-level `componentName` must be the **display name** (`"Room Type"`), not the alias (`"room-type"`) — the alias fails with `"Component doesn't exists"`. | `src/clients/miblockCreateClient.js` |
 | `POST /web/prd/api/property/GetWebContent` (`api-gateway.redistay.com`) | Reference data (rooms, amenities, gallery, thumbnail). Requires `Ocp-Apim-Subscription-Key` header and `Device: "Web"` in the body (required field). | `src/clients/redistayClient.js` |
 | `POST /api/v2.0/dam/searchassets` (`damapi.milestoneinternet.com`) | Search DAM for the real asset URL matching a reference-API filename. Read-only. | `src/clients/damClient.js` |
+| `POST /api/ComponentApi/DeleteComponentRecord` (same host as CMS) | Deletes one or more records. **Undocumented**, PERMANENT (no known undo). `{ ComponentIds: "<miBlockId>", DeleteIDs: "<id1,id2,...>", SiteId: 17677 }` — both ID fields are comma-joined strings despite the singular-sounding names. | `src/clients/miblockDeleteClient.js` |
+| `GET /api/ProfileAPI/Get` (same host as CMS) | Returns **every** property's Profile record in one call (`{ ProfileUnap: [...] }`), each with `ProfileId` + `PropertyCode` — this is the map used to link a room-type record to its property's Profile (see the standing rule below). No query params needed, just auth headers. Cached per-process in `profileClient.js`. | `src/clients/profileClient.js` |
 
 ### Auth
 
@@ -105,39 +107,76 @@ the actual asset URL to write.** This project never uploads images — DAM asset
    `RRI1082`, `RRI121`. Every plan builder already loops over **all** `MainFilterObj` entries per
    property code, so this is handled — but a final decision on whether both records should always
    get filled (vs. just the "primary" one) is still open/deferred.
+8. **A `room-type` record MUST carry its property's Profile, or it doesn't show up correctly** (CMS
+   admin's manual "Add Component Record" form has an "Advance Configuration → Select Profile" field;
+   user confirmed a room type only shows in the UI once a profile is selected there). Discovered
+   *after* the whole 712-property room-type wipe (see below) — every room-type record created before
+   this fix landed had no Profile link and needs to be recreated.
+   - **Get the ID**: `GET /api/ProfileAPI/Get` → find the entry where `PropertyCode` matches, use its
+     `ProfileId` (`profileClient.js`'s `getProfileIdForPropertyCode()`).
+   - **Set it on create**: two earlier guesses were wrong and confirmed wrong in CMS admin
+     (`SelectedProfiles` alone on `CreateComponentRecord`; a `ProfileId` scalar + `Profile: [{ProfileID}]`
+     array). The fix, confirmed working on RRI207, was capturing CMS admin's own real save request
+     (a *different* endpoint, `POST /ccadmin/cms/Component/SaveComponentRecord` — admin-panel-internal,
+     not `/api/MiblockApi/...`) and copying its companion fields onto our existing
+     `CreateComponentRecord` call: `SelectedProfiles` **and** `PreviousAssignProfileIds` (both the
+     stringified `ProfileId`), plus `MainParentComponentId` **and** `ParentComponentId` (both the
+     *parent* component's MiBlockId — `20132` for a `room-type` whose parent is `property-data` —
+     not the room-type's own `20135`). All four together were needed; `SelectedProfiles` alone was not
+     enough. See `buildRoomTypeRecordPayload()` in `miblockCreateClient.js`.
+   - The real `/ccadmin/cms/Component/SaveComponentRecord` endpoint itself was captured but never
+     adopted — the user chose to keep using `CreateComponentRecord` with the borrowed fields instead.
+     It's worth revisiting if another undocumented gap shows up (it appeared to accept a `RecordId`
+     for an *existing* record too, which could be the missing "update text fields on an existing
+     record" API this project has wanted since the alt-text/`api-unique-id` gaps — see below). Full
+     headers (auth method, Content-Type, anti-forgery token) were never captured, so treat it as
+     unexplored, not ruled out.
 
 ## Known gaps / open items
 
 - **Per-image `AssetAltText`** is never set (see rule 5). Room-type records created by us do get a
   record-level `room-images-alt` **text** field (via `CreateComponentRecord`'s `RecordJsonString`),
   but that's a different, possibly-unused field from the per-image alt text nested in each
-  `room-images[]` entry — unconfirmed which one the frontend actually renders.
-- **Full rollout not done.** Only `RRI207` and `RRI656` have been run end-to-end (listing + gallery
-  + room-type). `output/property-codes.json` has all 712 property codes; `batchAnalyze.js` exists
-  for room-type-only dry-run analysis at scale but hasn't been re-run since listing/gallery were
-  added, and no batch **write** run has happened yet. Do small batches, not all 712 at once.
-- **`CreateComponentRecord` payload is guessed.** Several fields in
+  `room-images[]` entry — unconfirmed which one the frontend actually renders. The captured
+  `SaveComponentRecord` endpoint (rule 8) might be the real fix path for this too, if revisited.
+- **`CreateComponentRecord` payload still has guessed fields.** Several fields in
   `buildRoomTypeRecordPayload()` (`ComponentLevel`, `Offset`, `ProfileCouponMapping`, etc.) were
   copied verbatim from an existing record with unknown purpose — they work, but "why" is unknown.
   `DisplayOrder`, `CreatedBy`/`UpdatedBy`, `StartDate`/`EndDate` are omitted entirely (left to
-  server defaults) — unverified whether that's fine at scale (e.g. does every new record land at
-  the same `DisplayOrder` and mess up ordering?).
-- **No delete/rollback API yet** — the user said they'll provide one later. Until then, treat every
-  create as permanent; double-check payloads before firing.
+  server defaults) — unverified whether that's fine at scale.
 - **Token expiry mid-batch** — both CMS and DAM tokens are ~24h personal-session tokens. A long
-  batch run could outlive them. User said not to worry about this for now, but a real batch runner
-  should handle re-auth or at least fail loudly and resumably.
+  batch run could outlive them; the batch scripts don't handle re-auth, they just fail loudly.
+  Restart the batch from wherever it stopped after refreshing `.env`.
+- **`GetComponentData` can transiently return empty results under load, not just lag on recent
+  writes** — a 500-property batch (concurrency 5) saw ~43% of properties come back with `TotalCount:
+  0` / no `MainFilterObj`, and every single one succeeded on retry. Root cause unconfirmed (backend
+  load, not real absence). All batch scripts (`deleteAllRoomTypesBatch.js`,
+  `recreateAllRoomTypesBatch.js`) now retry up to 3x with backoff before concluding "no property
+  record" — don't remove that without re-confirming the underlying issue is gone.
 
 ## Logs (property-code-wise, durable, append-only)
 
-- `output/action-log.jsonl` — every `createComponentRecord` / `updateMiblockRecordAsset` call ever
-  made, with the full request and response. This is the audit trail **and** the duplicate-safety
-  registry (`createdRegistry.js` reads it). Never delete or hand-edit this file.
+- `output/action-log.jsonl` — every `createComponentRecord` / `updateMiblockRecordAsset` /
+  `deleteComponentRecord` call ever made, with the full request and response. This is the audit
+  trail **and** the duplicate-safety registry (`createdRegistry.js` reads it — also exposes
+  `loadCreatedRecordIdsForParent()`, used to build a complete delete-target list that a lagging read
+  API might otherwise miss records from). Never delete or hand-edit this file.
 - `output/no-image-matches.jsonl` — every case where a reference-API image had no DAM match, with
   `propertyCode`, `component` (`room-images`/`listing-page-image`/`gallery-images`), `identifier`
   (room code or gallery category), `fileName`, `reason`. Run
   `summarizeNoMatchesByProperty()` (`src/noMatchLog.js`) to regenerate
-  `output/no-image-matches-by-property.json`, a property-code-grouped view for human review.
+  `output/no-image-matches-by-property.json`.
+- `output/no-reference-data.jsonl` — properties where RediStay's `GetWebContent` returned no
+  `RoomDetails` at all (nothing to create room-types from). `summarizeNoReferenceDataByProperty()`
+  (`src/noReferenceDataLog.js`) → `output/no-reference-data-by-property.json`.
+- `output/completed-properties.jsonl` — simple processed/not-processed progress tracker across batch
+  runs (property code + outcome status + timestamp), separate from the full-detail master files
+  below. `summarizeCompletedProperties()` (`src/completedPropertiesLog.js`) →
+  `output/completed-properties-list.json`.
+- `output/deleted-room-types-by-property.json` and `output/recreated-room-types-by-property.json` —
+  running, property-code-keyed master summaries written directly by `deleteAllRoomTypesBatch.js` and
+  `recreateAllRoomTypesBatch.js` respectively (merge-on-write, not append-only like the `.jsonl`
+  logs).
 
 ## File map
 
@@ -149,20 +188,52 @@ src/
     damClient.js             DAM search + fuzzy matching (read)
     miblockWriteClient.js    UpdateMiblockRecordAsset (write, asset fields on existing records)
     miblockCreateClient.js   CreateComponentRecord (write, new records) + payload builder
-  planForProperty.js         room-type plan builder (create/update/skip decisions)
+    miblockDeleteClient.js    DeleteComponentRecord (write, PERMANENT)
+    profileClient.js           ProfileAPI/Get (read) -> PropertyCode -> ProfileId lookup
+  planForProperty.js         room-type plan builder (create/update/skip decisions) - PRE-DATES the
+                              Profile-linking fix (rule 8); if reused, wire profileId through it
   listingImagePlan.js        listing-page-image plan builder (always-refresh)
   galleryPlan.js              property-level-gallery plan builder (always-refresh, categorized)
-  createdRegistry.js          reads action-log.jsonl -> Set of already-created room-types
+  createdRegistry.js          reads action-log.jsonl -> created-room-type Set + per-parent record IDs
   noMatchLog.js                records/summarizes DAM no-match cases
-  actionLog.js                  the append-only write-audit logger
-  analyze.js                    CLI: `node src/analyze.js <propertyCode>` - room-type plan only, read-only
-  batchAnalyze.js                CLI: room-type plan across all of output/property-codes.json, read-only
+  noReferenceDataLog.js         records/summarizes "no RediStay room data" cases
+  completedPropertiesLog.js      simple batch-progress tracker (processed vs not, per property)
+  actionLog.js                    the append-only write-audit logger
+  analyze.js                      CLI: `node src/analyze.js <propertyCode>` - room-type plan only, read-only
+  batchAnalyze.js                  CLI: room-type plan across all of output/property-codes.json, read-only
+  deleteAndRecreateRoomTypes.js      CLI: delete+recreate room-types for ONE property (single-property
+                                     version of the batch script below; predates the Profile-linking
+                                     fix - buildRoomTypeRecordPayload() call in here needs profileId
+                                     added if this script is used again)
+  deleteAllRoomTypesBatch.js          CLI: `node src/deleteAllRoomTypesBatch.js <startIndex> <batchSize>`
+                                       - deletes room-types for a slice of property-codes.json, PERMANENT,
+                                       already run across all 712 (see status below)
+  recreateAllRoomTypesBatch.js         CLI: `node src/recreateAllRoomTypesBatch.js <startIndex> <batchSize>`
+                                        - the CURRENT full pipeline: clears any leftover room-type
+                                        records for a property, then recreates fresh from RediStay with
+                                        Profile linking + one DAM-matched image each. THIS is the script
+                                        to run/resume the 712-property rollout with.
   parsePropertyList.js            one-off: parsed data/property-codes-raw.txt into output/property-codes.json
   index.js                         CLI: raw dual-fetch dump (early scaffold, still works, mostly superseded)
   testRRI656.js                     one-off script used for the first full multi-component test run
 data/property-codes-raw.txt   raw copy-pasted CMS property listing (source of the 712 codes)
 output/                       all generated data - plans, logs, property list. Gitignored.
 ```
+
+## Current rollout status (update this section as batches complete)
+
+1. **All 712 properties' `room-type` records were deleted** (`deleteAllRoomTypesBatch.js`, 3 batches:
+   0–100, 100–600, 600–712) — 1282 records removed, 0 errors, 0 unresolved "no property record" cases
+   (all initial "missing" ones were the transient-empty-response issue above, confirmed via retry).
+2. **Recreation is in progress** (`recreateAllRoomTypesBatch.js`), with the Profile-linking fix
+   included from the start of this phase. Batch `0–100` is done (99 OK, 1 `HTS1031` has no RediStay
+   room data at all — logged, not an error). Remaining: `100–600`, then `600–712`. This work is
+   split between two people on two branches (`jainil-develop`, `vishal-develop`) — **check both
+   branches' git log and `output/completed-properties-list.json` before assuming a range is
+   untouched**, since `output/` itself is gitignored and each person's local progress files won't be
+   visible to the other without them separately sharing status.
+3. Branches: work happens on `jainil-develop` and `vishal-develop`; **`main` is not touched**, per
+   explicit instruction.
 
 ## How to run things
 
@@ -181,11 +252,29 @@ node -e "import('./src/listingImagePlan.js').then(m => m.buildListingImagePlan('
 node -e "import('./src/galleryPlan.js').then(m => m.buildGalleryPlan('RRI207')).then(console.log)"
 ```
 
-**There is no single "run everything for one property, writes included" script yet** — the
-RRI207/RRI656 test runs were done as one-off inline `node -e` scripts per component, following the
-plan output. If you build one, wire in `recordNoMatch`/`logAction` (already automatic inside the
-clients) and make it re-check `buildPlanForProperty`/`buildListingImagePlan`/`buildGalleryPlan`
-fresh right before writing, per the duplicate-safety rule above.
+**Room-type rollout (writes, PERMANENT, this is the live in-progress task — see status above):**
+
+```bash
+# Recreates room-types for properties at index [start, start+size) of output/property-codes.json.
+# Deletes any leftover room-type records first, then creates fresh from RediStay + links one DAM
+# image each, with Profile linking. Prints a per-batch summary and updates
+# output/recreated-room-types-by-property.json + output/completed-properties-list.json.
+node src/recreateAllRoomTypesBatch.js <startIndex> <batchSize>
+
+# e.g. to continue after 0-100 is done:
+node src/recreateAllRoomTypesBatch.js 100 500
+node src/recreateAllRoomTypesBatch.js 600 112
+```
+
+Check the printed summary's `Errors` count after every batch before moving to the next slice. If a
+property comes back `no-property-record`, that was historically a transient `GetComponentData`
+issue (see Known gaps) already retried 3x internally — if it's still failing after a fresh
+manual re-check, something's actually wrong, don't just re-run blindly.
+
+Listing-image and gallery plans don't yet have a batch-write script — `buildListingImagePlan()` /
+`buildGalleryPlan()` above are read-only plan builders; applying them at scale would need the same
+per-property loop + `updateMiblockRecordAsset()` calls shown in `README.md`'s manual snippets, not
+yet wired into a dedicated batch script the way room-type is.
 
 ## Working agreement with the user (important)
 
