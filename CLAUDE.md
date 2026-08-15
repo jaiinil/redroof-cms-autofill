@@ -147,28 +147,28 @@ the actual asset URL to write.** This project never uploads images — DAM asset
 - **Token expiry mid-batch** — both CMS and DAM tokens are ~24h personal-session tokens. A long
   batch run could outlive them; the batch scripts don't handle re-auth, they just fail loudly.
   Restart the batch from wherever it stopped after refreshing `.env`.
-- **`UpdateMiblockRecordAsset` can return `Success: true` and write nothing.** Confirmed on
-  `property-data` (`listing-page-image`, MiBlockId 20132) and `property-level-gallery`
-  (`gallery-images`, 20133) records on 2026-08-15. **`Success: true` is NOT proof a write landed.**
-  - **How to actually verify a write**: read the record back and compare its `updateddate` against
-    your write timestamp. A landed write matches to within milliseconds (confirmed on room-type
-    record 221688: write at `03:24:05.269Z`, `updateddate` `03:24:05.25`). A silent no-op leaves
-    `updateddate` untouched — the failing gallery records still read `2026-07-03T07:30:20.36`, their
-    bulk-template creation date, identical across unrelated properties.
-  - **Not a read-lag, not the token, not an outage**: room-type creates and `room-images` updates
-    made the same night, minutes apart, on the same token, all landed and read back immediately.
-  - **It is not permanently broken either**: the same call on the same gallery record (157748,
-    HTS1018) landed on 2026-08-14 at 13:22 and silently no-opped on 2026-08-15 at 03:36. Both
-    requests were byte-identical (same MiBlockId, RecordId, asset URL) with byte-identical
-    responses.
-  - **Metadata gives no clue**: a record where the write lands (157748) and one where it doesn't
-    (158898) are identical on `ComponentId`, `RecordIsEditable`, `IsProtected`, `IsVisible`,
-    `ProfileCount`/`Profiles`, `LanguageId`, `HasLocalChanges` and all date fields.
-  - Cause unknown. Untested leads: whether the target field having **no existing value** matters
-    (every confirmed landing was on a record that already had a value, or a room-type record we had
-    just created); a server-side rate/quota effect after thousands of writes; and the
-    `POST /ccadmin/cms/Component/SaveComponentRecord` endpoint noted in rule 8, which is the path
-    CMS admin itself uses and remains unexplored.
+- **`GetComponentData` lags MULTIPLE HOURS for `property-data` and `property-level-gallery` — and
+  the lag is total, not partial.** After the listing/gallery batch, affected records read back as if
+  nothing had happened: `gallery-images` **absent from `Data` entirely** (not an empty array), and
+  `updateddate` still showing `2026-07-03T07:30:20.36`, the bulk-template creation date, identical
+  across unrelated properties. ~2 hours later every one of them read back correctly, with
+  `updateddate` matching the write timestamp to the millisecond. **Nothing was wrong; the read was
+  just hours stale.**
+  - **`updateddate` is NOT a reliable freshness check here** — it is served from the same stale view
+    and lags with everything else. This was learned the hard way: a whole 712-property rollout was
+    wrongly declared failed on exactly that evidence, and the wrong conclusion was committed to this
+    file before the reads caught up.
+  - **Intermediate/partial states are visible while it catches up.** HTS1018's Interior tab was
+    written with 4 images but read back as 3 mid-catch-up. Anything that reads-then-writes during
+    that window will cement the partial state — a "restore what was there" step read 3, wrote 3, and
+    silently dropped the 4th image. **Never round-trip (read → modify → write) these components
+    without knowing the read is settled.**
+  - **The lag is component-specific.** `room-type` creates and `room-images` updates made the same
+    night, minutes apart, on the same token, read back immediately and correctly. Only 20132/20133
+    showed the multi-hour delay.
+  - **How to actually verify a batch**: wait a few hours, then re-read and compare written vs read
+    counts per property. `Success: true` alone is not proof, but neither is an immediate empty read
+    proof of failure — the only trustworthy check is a settled read, or CMS admin.
 - **Leading-zero property codes have no DAM folder at all** — e.g. `RRI030`'s photos are not at
   `red-roof/rri030/siteimages/`, and no `rri30`-without-the-zero folder exists either (verified by
   scanning 500 assets for both spellings). Text-searching `"030"` *does* return hits, but they're
@@ -278,11 +278,14 @@ output/                       all generated data - plans, logs, property list. G
      match their reference room count exactly: `RRI1110`, `RRI1111`, `RRI111`, `RRI403`, `RRI404`.
      **A mid-property failure always leaves a partial property — re-run that property, don't assume
      the batch's per-property status is atomic.**
-3. **`listing-page-image` + `property-level-gallery`: the batch RAN but the writes DID NOT LAND.**
-   `listingGalleryBatch.js` was run across all 712 (batches 0–50, 50–150, 150–300, 300–500,
-   500–712) and reported 712 OK / 0 errors / 642 listing images / 4,705 gallery images — every call
-   returned `Success: true`. **None of it persisted.** See the known gap below; this rollout needs
-   redoing once the cause is found. Do not trust the batch's own summary as evidence of success.
+3. **`listing-page-image` + `property-level-gallery` are COMPLETE for all 712**
+   (`listingGalleryBatch.js`, batches 0–50, 50–150, 150–300, 300–500, 500–712): **712 OK, 0 errors,
+   642 listing images set, 1,653 gallery tabs filled, 4,705 gallery images linked.** Verified by
+   reading records back ~2h later: written count matches read count property by property.
+   - **For ~2 hours after the writes, `GetComponentData` showed all of this as empty**, which looks
+     exactly like total failure. See the read-lag gap below before concluding a batch did nothing.
+   - Properties that legitimately got nothing (`skip-no-dam-image-match`) are a separate DAM content
+     gap, not a write problem — see the leading-zero entry below.
 4. **Total audit trail: 10,520 write calls, zero `Success: false`, zero corrupt log lines.**
 5. **Known unverified item**: on `HTS1030` all 4 writes returned `Success: true`, but
    `GetComponentData` still read back empty on two separate re-reads minutes apart. Consistent with
