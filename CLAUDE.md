@@ -147,6 +147,14 @@ the actual asset URL to write.** This project never uploads images — DAM asset
 - **Token expiry mid-batch** — both CMS and DAM tokens are ~24h personal-session tokens. A long
   batch run could outlive them; the batch scripts don't handle re-auth, they just fail loudly.
   Restart the batch from wherever it stopped after refreshing `.env`.
+- **Leading-zero property codes have no DAM folder at all** — e.g. `RRI030`'s photos are not at
+  `red-roof/rri030/siteimages/`, and no `rri30`-without-the-zero folder exists either (verified by
+  scanning 500 assets for both spellings). Text-searching `"030"` *does* return hits, but they're
+  `hts1030` files matching on substring — the path filter in `listPropertyImages()` correctly
+  rejects them, so no wrong image is ever written; those properties just get records with no image.
+  **64 of the 712 codes are leading-zero**, and they account for the bulk of the 530 unmatched
+  gallery images (79 properties). This is a DAM content gap, not a matcher bug — once the photos are
+  uploaded, re-running `listingGalleryBatch.js` will fill them in (it's update-only).
 - **`GetComponentData` can transiently return empty results under load, not just lag on recent
   writes** — a 500-property batch (concurrency 5) saw ~43% of properties come back with `TotalCount:
   0` / no `MainFilterObj`, and every single one succeeded on retry. Root cause unconfirmed (backend
@@ -173,10 +181,15 @@ the actual asset URL to write.** This project never uploads images — DAM asset
   runs (property code + outcome status + timestamp), separate from the full-detail master files
   below. `summarizeCompletedProperties()` (`src/completedPropertiesLog.js`) →
   `output/completed-properties-list.json`.
-- `output/deleted-room-types-by-property.json` and `output/recreated-room-types-by-property.json` —
-  running, property-code-keyed master summaries written directly by `deleteAllRoomTypesBatch.js` and
-  `recreateAllRoomTypesBatch.js` respectively (merge-on-write, not append-only like the `.jsonl`
-  logs).
+- `output/deleted-room-types-by-property.json`, `output/recreated-room-types-by-property.json` and
+  `output/listing-gallery-by-property.json` — running, property-code-keyed master summaries written
+  directly by `deleteAllRoomTypesBatch.js`, `recreateAllRoomTypesBatch.js` and
+  `listingGalleryBatch.js` respectively (merge-on-write, not append-only like the `.jsonl` logs).
+  - **Caveat**: a property fixed by a one-off single-property re-run (rather than by a batch) will
+    still show its old `error` status here, because those re-runs deliberately skip the master-file
+    rewrite to avoid clobbering a concurrently running batch. `action-log.jsonl` and
+    `completed-properties.jsonl` are the truth for those. Known stale entries: `RRI1110`, `RRI1111`,
+    `RRI111`, `RRI403`, `RRI404` — all five are actually fixed.
 
 ## File map
 
@@ -185,7 +198,10 @@ src/
   clients/
     cmsClient.js            GetComponentData (read)
     redistayClient.js       GetWebContent (reference, read)
-    damClient.js             DAM search + fuzzy matching (read)
+    damClient.js             DAM search + fuzzy matching (read). listPropertyImages() caches per
+                              property per-process - findPropertyImageAsset() is called once per
+                              image, so an 11-image gallery would otherwise re-page the same folder
+                              11 times (measured: 5.8s -> 0ms on hit; gallery plan 60s -> 3s)
     miblockWriteClient.js    UpdateMiblockRecordAsset (write, asset fields on existing records)
     miblockCreateClient.js   CreateComponentRecord (write, new records) + payload builder
     miblockDeleteClient.js    DeleteComponentRecord (write, PERMANENT)
@@ -213,6 +229,11 @@ src/
                                         records for a property, then recreates fresh from RediStay with
                                         Profile linking + one DAM-matched image each. THIS is the script
                                         to run/resume the 712-property rollout with.
+  listingGalleryBatch.js               CLI: `node src/listingGalleryBatch.js <startIndex> <batchSize>`
+                                        - applies listing-page-image + property-level-gallery for a
+                                        slice. Update-only (both fields are always-refresh, rule 2),
+                                        so no delete/create and nothing permanent - safe to re-run.
+                                        Already run across all 712 (see status below).
   parsePropertyList.js            one-off: parsed data/property-codes-raw.txt into output/property-codes.json
   index.js                         CLI: raw dual-fetch dump (early scaffold, still works, mostly superseded)
   testRRI656.js                     one-off script used for the first full multi-component test run
@@ -225,15 +246,29 @@ output/                       all generated data - plans, logs, property list. G
 1. **All 712 properties' `room-type` records were deleted** (`deleteAllRoomTypesBatch.js`, 3 batches:
    0–100, 100–600, 600–712) — 1282 records removed, 0 errors, 0 unresolved "no property record" cases
    (all initial "missing" ones were the transient-empty-response issue above, confirmed via retry).
-2. **Recreation is in progress** (`recreateAllRoomTypesBatch.js`), with the Profile-linking fix
-   included from the start of this phase. Batch `0–100` is done (99 OK, 1 `HTS1031` has no RediStay
-   room data at all — logged, not an error). Remaining: `100–600`, then `600–712`. This work is
-   split between two people on two branches (`jainil-develop`, `vishal-develop`) — **check both
-   branches' git log and `output/completed-properties-list.json` before assuming a range is
-   untouched**, since `output/` itself is gitignored and each person's local progress files won't be
-   visible to the other without them separately sharing status.
-3. Branches: work happens on `jainil-develop` and `vishal-develop`; **`main` is not touched**, per
-   explicit instruction.
+2. **Room-type recreation is COMPLETE for all 712** (`recreateAllRoomTypesBatch.js`), with Profile
+   linking on every record. Batch `0–100` was done in a separate session (99 OK, `HTS1031` has no
+   RediStay room data). Batches `100–200`, `200–600`, `600–712` were run here: **~4,100 rooms
+   created, ~3,780 images linked (~92%)**, plus 7 `no-reference-rooms` properties (RediStay returns
+   no `RoomDetails` — not an error).
+   - 5 properties errored mid-batch on transient network/JSON faults and were left **partially
+     populated** (some rooms created, rest missing). All 5 were re-run individually and verified to
+     match their reference room count exactly: `RRI1110`, `RRI1111`, `RRI111`, `RRI403`, `RRI404`.
+     **A mid-property failure always leaves a partial property — re-run that property, don't assume
+     the batch's per-property status is atomic.**
+3. **`listing-page-image` + `property-level-gallery` are COMPLETE for all 712**
+   (`listingGalleryBatch.js`, batches 0–50, 50–150, 150–300, 300–500, 500–712): **712 OK, 0 errors,
+   642 listing images set, 1,653 gallery tabs filled, 4,705 gallery images linked.** Before this,
+   only the handful of manually-run properties (RRI207, RRI656, 5 HTS ones) had these fields — every
+   other property had them empty, because no batch script existed for them until now.
+4. **Total audit trail: 10,520 write calls, zero `Success: false`, zero corrupt log lines.**
+5. **Known unverified item**: on `HTS1030` all 4 writes returned `Success: true`, but
+   `GetComponentData` still read back empty on two separate re-reads minutes apart. Consistent with
+   the documented read-lag (rule 6) and with the fact that no write in 10,520 calls was rejected —
+   but **not confirmed in CMS admin**. Worth a spot-check.
+6. Branches: work happens on `jainil-develop` and `vishal-develop`; **`main` is not touched**, per
+   explicit instruction. `output/` is gitignored, so each person's progress files aren't visible to
+   the other — share status separately before assuming a range is untouched.
 
 ## How to run things
 
@@ -271,10 +306,14 @@ property comes back `no-property-record`, that was historically a transient `Get
 issue (see Known gaps) already retried 3x internally — if it's still failing after a fresh
 manual re-check, something's actually wrong, don't just re-run blindly.
 
-Listing-image and gallery plans don't yet have a batch-write script — `buildListingImagePlan()` /
-`buildGalleryPlan()` above are read-only plan builders; applying them at scale would need the same
-per-property loop + `updateMiblockRecordAsset()` calls shown in `README.md`'s manual snippets, not
-yet wired into a dedicated batch script the way room-type is.
+**Listing-image + gallery rollout (writes, update-only — safe to re-run):**
+
+```bash
+# Applies listing-page-image and all 3 property-level-gallery tabs for a slice.
+# Both fields are always-refresh (rule 2), so this only ever calls
+# updateMiblockRecordAsset - no creates, no deletes, nothing permanent.
+node src/listingGalleryBatch.js <startIndex> <batchSize>
+```
 
 ## Working agreement with the user (important)
 

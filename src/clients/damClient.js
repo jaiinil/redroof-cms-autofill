@@ -25,7 +25,15 @@ export async function searchAssets(body) {
  * filtered to the exact /<propertycode-lower>/ path segment as a safety net
  * against a numeric collision with a different brand prefix (e.g. HTS207).
  */
+// Per-process cache: a property's DAM folder contents don't change during a
+// run, and findPropertyImageAsset() is called once per image - a gallery with
+// 11 images would otherwise re-fetch (and re-page) the same folder 11 times.
+const propertyImagesCache = new Map();
+
 export async function listPropertyImages(propertyCode) {
+  const cacheKey = propertyCode.toLowerCase();
+  if (propertyImagesCache.has(cacheKey)) return propertyImagesCache.get(cacheKey);
+
   const numericPart = propertyCode.match(/\d+/)?.[0];
   if (!numericPart) return [];
 
@@ -42,6 +50,7 @@ export async function listPropertyImages(propertyCode) {
     page += 1;
   }
 
+  propertyImagesCache.set(cacheKey, all);
   return all;
 }
 
