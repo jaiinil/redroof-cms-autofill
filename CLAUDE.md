@@ -84,6 +84,16 @@ the actual asset URL to write.** This project never uploads images — DAM asset
    `AlternateText`/`Caption` keywords (no explicit category field in the reference API) — see
    `classify()` in `galleryPlan.js`. Bathroom photos (contain "bath") → `Interior`, even if the alt
    text also mentions a room name like "Superior King" — confirmed with the user.
+   - **SUPERSEDED for gallery by `damGalleryBatch.js` (user-approved 2026-08-17).** The reference
+     feed proved too thin a source: it is a smaller subset than the DAM folder, and its alt-text
+     frequently classified nothing as `Exterior`, leaving that tab empty on 48 properties whose DAM
+     folders held exterior shots all along. `damGalleryBatch.js` sources from the DAM folder and
+     categorises on the FILENAME instead. Bath-beats-room-name still holds. It also filters
+     `-delete` (retired) and `sign-off` (signage) assets, strips the "HomeTowne Studios" brand token
+     so a ballroom shot doesn't land in `Rooms`, and takes one image per room family before
+     backfilling variants so five different room types show rather than five angles of one.
+     **Applied to ~210 properties; the rest still carry reference-sourced galleries**, so the two
+     sourcing methods currently coexist across the estate.
 5. **Alt-text is out of scope for this automation.** `UpdateMiblockRecordAsset` only accepts URLs,
    not alt-text, so it can't be set on existing records this way. It will be added from the CMS
    side manually/separately. Don't try to solve this here.
@@ -102,11 +112,13 @@ the actual asset URL to write.** This project never uploads images — DAM asset
      property can temporarily go fully blind to this specific query, not just its newest record.
      **When you need ground truth on a property's current state (not just duplicate-avoidance),
      ask the user to check CMS admin directly rather than trusting `GetComponentData`.**
-7. **9 property-codes have two legitimate `property-data` records in CMS** (not a data error —
-   confirmed with the user), e.g. `HTS1066`, `TRC1210`, `RRI387`, `RRI673`, `HTS1044`, `HTS1060`,
-   `RRI1082`, `RRI121`. Every plan builder already loops over **all** `MainFilterObj` entries per
-   property code, so this is handled — but a final decision on whether both records should always
-   get filled (vs. just the "primary" one) is still open/deferred.
+7. **RESOLVED (2026-08-17): there are no longer any duplicate `property-data` records.** There used
+   to be 8 property codes with two records each (`HTS1044`, `HTS1060`, `HTS1066`, `HTS1072`,
+   `RRI1082`, `RRI121`, `RRI387`, `RRI673`) — in every case the newer record (id ~172xxx) carried
+   room-types but no `property-level-gallery` records at all. The user deleted all 8 duplicates in
+   CMS admin; the surviving record is the older, fully-populated one. A scan of all 712 codes now
+   returns exactly one `property-data` record each. Plan builders still loop over every
+   `MainFilterObj` entry, which is correct and costs nothing — don't remove that.
 8. **A `room-type` record MUST carry its property's Profile, or it doesn't show up correctly** (CMS
    admin's manual "Add Component Record" form has an "Advance Configuration → Select Profile" field;
    user confirmed a room type only shows in the UI once a profile is selected there). Discovered
@@ -169,6 +181,19 @@ the actual asset URL to write.** This project never uploads images — DAM asset
   - **How to actually verify a batch**: wait a few hours, then re-read and compare written vs read
     counts per property. `Success: true` alone is not proof, but neither is an immediate empty read
     proof of failure — the only trustworthy check is a settled read, or CMS admin.
+- **`gallery-images` accepts a MAXIMUM OF 5 assets per field.** Send 6+ and the FIELD fails —
+  `"Number of AssetUrls exceeds the maximum limit of 5 for field alias gallery-images"` with
+  `Success: false` in `UpdateMiBlockRecordStatuses` — while the **top-level `Success` stays `true`**.
+  A caller that only checks the top-level flag records a success and leaves the tab empty. This
+  silently lost **170 tabs across 159 properties** on the first listing/gallery run. `MAX_GALLERY_IMAGES`
+  in `listingGalleryBatch.js` / `damGalleryBatch.js` now truncates and reports what was dropped.
+  **Always check the per-field statuses, never just `body.Success`.**
+- **`skip-no-cms-record` is not proof a record is missing.** `GetComponentData` can return a
+  property record with an empty `ChildRecords` list, then return the same record minutes later with
+  all its children. TRC1210 read as having zero `property-level-gallery` records twice, which is why
+  the batch skipped all three of its tabs — a full re-scan showed all three present the whole time.
+  Confirm with repeated reads (they were stable across 3 reads for the genuinely-missing cases)
+  before concluding a record needs creating.
 - **Leading-zero property codes have no DAM folder at all** — e.g. `RRI030`'s photos are not at
   `red-roof/rri030/siteimages/`, and no `rri30`-without-the-zero folder exists either (verified by
   scanning 500 assets for both spellings). Text-searching `"030"` *does* return hits, but they're
@@ -256,6 +281,12 @@ src/
                                         slice. Update-only (both fields are always-refresh, rule 2),
                                         so no delete/create and nothing permanent - safe to re-run.
                                         Already run across all 712 (see status below).
+  damGalleryBatch.js                   CLI: `node src/damGalleryBatch.js <startIndex> <batchSize>`
+                                        - fills property-level-gallery straight from the property's
+                                        DAM folder, categorising by FILENAME. Deliberately bypasses
+                                        the RediStay reference feed (see rules 2/4 note below).
+                                        Exports buildDamGalleryPlan() + applyDamGalleryForProperty()
+                                        for single-property use.
   parsePropertyList.js            one-off: parsed data/property-codes-raw.txt into output/property-codes.json
   index.js                         CLI: raw dual-fetch dump (early scaffold, still works, mostly superseded)
   testRRI656.js                     one-off script used for the first full multi-component test run
@@ -286,7 +317,17 @@ output/                       all generated data - plans, logs, property list. G
      exactly like total failure. See the read-lag gap below before concluding a batch did nothing.
    - Properties that legitimately got nothing (`skip-no-dam-image-match`) are a separate DAM content
      gap, not a write problem — see the leading-zero entry below.
-4. **Total audit trail: 10,520 write calls, zero `Success: false`, zero corrupt log lines.**
+4. **Gallery re-filled from DAM on ~210 properties** (`damGalleryBatch.js`): the 155 whose tabs the
+   5-asset limit had silently emptied, then 49 more whose `Exterior` tab was empty despite DAM
+   holding exterior shots, plus a handful of one-offs. All landed, 0 errors.
+5. **Verified end state (full re-read of all 712 on 2026-08-17):** 642 properties have images;
+   70 are completely empty (62 have no DAM folder, 8 get no `ImageGallery` from RediStay); 3 are
+   partially empty (`RRI635` has 30 DAM photos but none exterior, `RRI553` has one bathroom photo,
+   `RRI019` has listing images but no DAM folder). **Nothing is left that automation can fix** —
+   every remaining gap needs photos uploaded to DAM or room data added in RediStay.
+   Cross-checking written-vs-read found **zero** properties where a write did not land.
+   Report: `output/image-zero-report.csv`, `output/full-diagnosis.json`.
+6. **Total audit trail: 10,520 write calls, zero `Success: false`, zero corrupt log lines.**
 5. **Known unverified item**: on `HTS1030` all 4 writes returned `Success: true`, but
    `GetComponentData` still read back empty on two separate re-reads minutes apart. Consistent with
    the documented read-lag (rule 6) and with the fact that no write in 10,520 calls was rejected —

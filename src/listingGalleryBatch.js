@@ -9,6 +9,13 @@ const CONCURRENCY = 3;
 const EMPTY_RESPONSE_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
 
+// The CMS caps gallery-images at 5 assets per field. Sending more fails the
+// FIELD ("Number of AssetUrls exceeds the maximum limit of 5 for field alias
+// gallery-images") while the top-level Success stays true - so the whole tab
+// silently ends up empty. 170 tabs across 159 properties were lost this way
+// on the first run. Truncate, and report what was dropped.
+const MAX_GALLERY_IMAGES = 5;
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -66,13 +73,21 @@ export async function applyListingAndGalleryForProperty(propertyCode) {
       result.gallery.push({ category: p.category, result: 'skip:' + p.action });
       continue;
     }
+    const assetUrls = p.assetUrls.slice(0, MAX_GALLERY_IMAGES);
+    const dropped = p.assetUrls.length - assetUrls.length;
     const r = await updateMiblockRecordAsset({
       miBlockId: p.miBlockId,
       recordId: p.recordId,
-      assetFields: [{ fieldAlias: p.fieldAlias, assetUrls: p.assetUrls }],
+      assetFields: [{ fieldAlias: p.fieldAlias, assetUrls }],
     });
     const ok = (r.fieldStatuses || []).every((f) => f.Success !== false) && !r.missingAliases.length;
-    result.gallery.push({ category: p.category, recordId: p.recordId, images: p.assetUrls.length, result: ok ? 'ok' : 'check' });
+    const entry = { category: p.category, recordId: p.recordId, images: assetUrls.length, result: ok ? 'ok' : 'check' };
+    if (dropped) {
+      entry.droppedOverLimit = dropped;
+      entry.droppedFiles = p.assetUrls.slice(MAX_GALLERY_IMAGES).map((u) => u.split('/').pop());
+    }
+    if (!ok) entry.fieldStatuses = r.fieldStatuses;
+    result.gallery.push(entry);
   }
 
   return result;
