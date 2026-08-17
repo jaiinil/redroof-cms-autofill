@@ -76,8 +76,16 @@ the actual asset URL to write.** This project never uploads images — DAM asset
    the single-image rule is final).
 2. **`listing-page-image` and `gallery-images`: always refreshed**, never skipped just because a
    value already exists (unlike `room-images`, which skips if already populated — see below).
-   Source: `ImageGallery[0]` from the reference API for the listing image; every `ImageGallery[]`
-   entry, categorized, for the gallery.
+   - **`listing-page-image` source is `ThumbnailImage.Image.FileName`** (user-confirmed 2026-08-17,
+     replacing the earlier `ImageGallery[0]`; `ImageGallery[0]` remains a fallback when a property
+     has no `ThumbnailImage`). **The two do not always agree** — on `HTS1437` `ThumbnailImage` is a
+     jetted-tub room shot while `ImageGallery[0]` was the twilight exterior, so this change moved
+     some properties' hero image from an exterior to a room.
+   - **`gallery-images` source is every `ImageGallery[].Image.FileName`**, categorized.
+   - In both cases the reference feed only **names** the file; the URL written is always the DAM
+     asset found for that name. The feed's own `Image.Url` / `Image.otherSources.original`
+     (`images.redroof.com`) **are accepted by the CMS** — verified — but using them would put part
+     of the estate on a different host, so DAM stays the source of URLs.
 3. **`room-images` skip-if-populated**: if an existing CMS room-type record already has ≥1 image,
    leave it alone (`skip-already-has-image`). Only empty ones get updated.
 4. **Gallery categorization** (`Exterior` / `Interior` / `Rooms`) is inferred from
@@ -181,13 +189,27 @@ the actual asset URL to write.** This project never uploads images — DAM asset
   - **How to actually verify a batch**: wait a few hours, then re-read and compare written vs read
     counts per property. `Success: true` alone is not proof, but neither is an immediate empty read
     proof of failure — the only trustworthy check is a settled read, or CMS admin.
-- **`gallery-images` accepts a MAXIMUM OF 5 assets per field.** Send 6+ and the FIELD fails —
-  `"Number of AssetUrls exceeds the maximum limit of 5 for field alias gallery-images"` with
-  `Success: false` in `UpdateMiBlockRecordStatuses` — while the **top-level `Success` stays `true`**.
-  A caller that only checks the top-level flag records a success and leaves the tab empty. This
-  silently lost **170 tabs across 159 properties** on the first listing/gallery run. `MAX_GALLERY_IMAGES`
-  in `listingGalleryBatch.js` / `damGalleryBatch.js` now truncates and reports what was dropped.
-  **Always check the per-field statuses, never just `body.Success`.**
+- **`UpdateMiblockRecordAsset` used to cap every asset field at 5 assets — LIFTED 2026-08-17.**
+  Sending 6+ failed the FIELD (`"Number of AssetUrls exceeds the maximum limit of 5 for field alias
+  <alias>"`, `Success: false` in `UpdateMiBlockRecordStatuses`) while the **top-level `Success`
+  stayed `true`** — so a caller checking only the top-level flag recorded a success and left the tab
+  empty. That silently lost **170 tabs across 159 properties**. The cap was identical (5) on
+  `gallery-images`, `listing-page-image` and `room-images`, i.e. not per-field config; CMS admin
+  could save more than 5 while the API refused, which is what pinned it to the API. After Milestone
+  lifted it, re-verified by sending 6, 8, 12, 20, 40 and all 57 usable assets of one property to a
+  single tab — every one accepted, no new ceiling found. `MAX_GALLERY_IMAGES` is now `Infinity`.
+  **The lesson outlives the cap: always check the per-field statuses, never just `body.Success`.**
+- **A DAM token can die BEFORE its `exp`.** Mid-batch, 21 properties failed with
+  `DAM auth failed` while the JWT still had 6.7 hours left; the API answered `401` with
+  `www-authenticate: Bearer error="invalid_token"`. Re-logging into Asgard appears to revoke the
+  previous token. **Checking `exp` is not enough — make one live DAM call to confirm a token before
+  starting a long batch.** When it happens the damage is contained: the DAM lookup runs before any
+  write, so the affected properties get nothing written rather than half-written.
+- **Transient failures are normal on every batch and all of them recovered on retry.** Across the
+  712-property listing/gallery re-run: 21 DAM `401`s, several `fetch failed`, and several
+  `No CMS property-data record found` (the documented transient-empty read). Re-running just the
+  failed codes fixed every one. **Treat "re-run the failures" as a required step of any batch, not
+  an exception.**
 - **`skip-no-cms-record` is not proof a record is missing.** `GetComponentData` can return a
   property record with an empty `ChildRecords` list, then return the same record minutes later with
   all its children. TRC1210 read as having zero `property-level-gallery` records twice, which is why

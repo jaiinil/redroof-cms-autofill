@@ -9,12 +9,15 @@ const CONCURRENCY = 3;
 const EMPTY_RESPONSE_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
 
-// The CMS caps gallery-images at 5 assets per field. Sending more fails the
-// FIELD ("Number of AssetUrls exceeds the maximum limit of 5 for field alias
-// gallery-images") while the top-level Success stays true - so the whole tab
-// silently ends up empty. 170 tabs across 159 properties were lost this way
-// on the first run. Truncate, and report what was dropped.
-const MAX_GALLERY_IMAGES = 5;
+// The CMS used to cap gallery-images at 5 assets per field, failing the FIELD
+// ("Number of AssetUrls exceeds the maximum limit of 5 for field alias
+// gallery-images") while the top-level Success stayed true - so the whole tab
+// silently ended up empty. 170 tabs across 159 properties were lost that way
+// on the first run. The cap was lifted on 2026-08-17 and re-verified up to 57
+// assets on one tab with no ceiling found, so nothing is truncated now. The
+// dropped-file reporting below stays: if a cap ever returns, it will show up
+// in the batch output instead of silently emptying tabs again.
+const MAX_GALLERY_IMAGES = Infinity;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));

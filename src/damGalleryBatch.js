@@ -6,7 +6,14 @@ import { listPropertyImages } from './clients/damClient.js';
 import { updateMiblockRecordAsset } from './clients/miblockWriteClient.js';
 
 const GALLERY_MIBLOCK_ID = 20133;
-const MAX_GALLERY_IMAGES = 5;
+
+// UpdateMiblockRecordAsset used to cap every asset field at 5 and fail the
+// FIELD (while leaving the top-level Success true) on anything more, which
+// silently emptied 170 gallery tabs. That cap was lifted on 2026-08-17 —
+// re-verified by sending 6, 8, 12, 20, 40 and finally all 57 usable assets of
+// one property to a single tab, every one accepted. No new ceiling was found,
+// so there is nothing to truncate to.
+const MAX_GALLERY_IMAGES = Infinity;
 const CONCURRENCY = 3;
 const EMPTY_RESPONSE_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;

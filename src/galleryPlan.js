@@ -13,8 +13,10 @@ const CATEGORIES = ['Exterior', 'Interior', 'Rooms'];
 function classify(item) {
   const text = `${item.Image?.AlternateText || ''} ${item.Caption || ''}`.toLowerCase();
   if (text.includes('bath')) return 'Interior';
-  if (text.includes('exterior')) return 'Exterior';
-  if (/\b(king|queen|suite|bed|beds|room)\b/.test(text)) return 'Rooms';
+  // "exterior" alone missed a lot: twilight shots, pool, patio, dog park and
+  // picnic areas are all outdoors and were landing in Interior.
+  if (/exterior|twilight|pool|patio|courtyard|picnic|dog park|playground/.test(text)) return 'Exterior';
+  if (/\b(king|queen|suite|studio|bed|beds|room)\b/.test(text)) return 'Rooms';
   return 'Interior';
 }
 

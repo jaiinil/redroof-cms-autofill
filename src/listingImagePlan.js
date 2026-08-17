@@ -24,7 +24,16 @@ export async function buildListingImagePlan(propertyCode) {
     throw new Error(`No CMS property-data record found for ${propertyCode}`);
   }
 
-  const firstGalleryImage = referenceData?.Data?.Results?.[0]?.ImageGallery?.[0];
+  // Source is the reference feed's own ThumbnailImage - the image it nominates
+  // as the property's thumbnail - confirmed with the user 2026-08-17, replacing
+  // the earlier ImageGallery[0]. Note the two do NOT always agree: on HTS1437
+  // ThumbnailImage is a jetted-tub room shot while ImageGallery[0] was the
+  // twilight exterior. ImageGallery[0] stays as a fallback so a property with
+  // no ThumbnailImage still gets a listing image rather than none.
+  const result0 = referenceData?.Data?.Results?.[0];
+  const firstGalleryImage = result0?.ThumbnailImage?.Image?.FileName
+    ? result0.ThumbnailImage
+    : result0?.ImageGallery?.[0];
   if (!firstGalleryImage) {
     await recordNoMatch({ propertyCode, component: 'listing-page-image', identifier: 'listing-page-image', fileName: null, reason: 'no ImageGallery entries in reference API' });
     return propertyRecords.map((pr) => ({
