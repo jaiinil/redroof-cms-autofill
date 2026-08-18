@@ -309,6 +309,25 @@ src/
                                         the RediStay reference feed (see rules 2/4 note below).
                                         Exports buildDamGalleryPlan() + applyDamGalleryForProperty()
                                         for single-property use.
+  coverageScan.js                      CLI: `node src/coverageScan.js` - read-only sweep of all 712,
+                                        counting listing/gallery/room images per property. Writes
+                                        output/image-zero-report.{json,csv}. This is how a batch gets
+                                        verified once the reads have settled.
+  inventoryScan.js                     CLI: `node src/inventoryScan.js` - read-only, same sweep but
+                                        also captures EVERY room-type record's own image count.
+                                        Writes output/consolidated-report.{json,csv} plus
+                                        output/consolidated-rooms.csv (one row per room-type record).
+  inventoryReport.js                   CLI: `node src/inventoryReport.js` - turns that scan into
+                                        output/image-inventory.html, a searchable per-property table.
+                                        Run inventoryScan.js first.
+  fillPropertyBatch.js                 CLI: `node src/fillPropertyBatch.js <code> [<code>...]`
+                                        or `--file <json>`. Fills all three components for the given
+                                        properties: gallery from DAM, listing from the reference feed
+                                        (DAM exterior as fallback), room images from each room's own
+                                        reference filename. Update-only; a room-type that needs
+                                        CREATING is reported, never created, because creates are
+                                        permanent and need the rule-8 Profile wiring. This is the
+                                        script to run when DAM photos land for a property.
   parsePropertyList.js            one-off: parsed data/property-codes-raw.txt into output/property-codes.json
   index.js                         CLI: raw dual-fetch dump (early scaffold, still works, mostly superseded)
   testRRI656.js                     one-off script used for the first full multi-component test run
