@@ -168,3 +168,20 @@ export async function findPropertyImageAsset(propertyCode, fileName) {
 
   return null;
 }
+
+/**
+ * Finds a SHARED (not property-scoped) DAM asset by exact alias, e.g. the
+ * generic "no photo available" / "default room image" placeholders RediStay
+ * points to when it has no real photo for a property/room. These live in
+ * `red-roof/site-images/`, not any property's own siteimages folder, so
+ * findPropertyImageAsset() (which filters to one property's path) can never
+ * find them.
+ */
+export async function findSharedAsset(fileName) {
+  if (!fileName) return null;
+  const nameNoExt = fileName.replace(/\.[a-zA-Z0-9]+$/, '');
+  const result = await searchAssets({ TextToSearch: nameNoExt, SearchByAll: true, PageSize: 10 });
+  const assets = result.assetInfos || result.AssetInfos || [];
+  const exact = assets.find((a) => a.alias?.toLowerCase() === fileName.toLowerCase());
+  return exact || null;
+}

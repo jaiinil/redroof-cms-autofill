@@ -6,9 +6,16 @@
   "description": "Automation utility to fetch CMS component data and cross-check/reference against RediStay web content API",
   "main": "src/index.js",
   "scripts": {
-    "fetch": "node src/index.js"
+    "fetch": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:live": "cross-env LIVE_AUDIT=1 node --experimental-vm-modules node_modules/jest/bin/jest.js imageAccuracy.live",
+    "verify:accuracy": "node src/verifyImageAccuracyBatch.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.4.2"
   }
 }
