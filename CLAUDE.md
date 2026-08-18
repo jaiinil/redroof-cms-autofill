@@ -369,11 +369,11 @@ output/                       all generated data - plans, logs, property list. G
    Cross-checking written-vs-read found **zero** properties where a write did not land.
    Report: `output/image-zero-report.csv`, `output/full-diagnosis.json`.
 6. **Total audit trail: 10,520 write calls, zero `Success: false`, zero corrupt log lines.**
-5. **Known unverified item**: on `HTS1030` all 4 writes returned `Success: true`, but
+7. **Known unverified item**: on `HTS1030` all 4 writes returned `Success: true`, but
    `GetComponentData` still read back empty on two separate re-reads minutes apart. Consistent with
    the documented read-lag (rule 6) and with the fact that no write in 10,520 calls was rejected —
    but **not confirmed in CMS admin**. Worth a spot-check.
-6. Branches: work happens on `jainil-develop` and `vishal-develop`; **`main` is not touched**, per
+8. Branches: work happens on `jainil-develop` and `vishal-develop`; **`main` is not touched**, per
    explicit instruction. `output/` is gitignored, so each person's progress files aren't visible to
    the other — share status separately before assuming a range is untouched.
 
