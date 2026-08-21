@@ -199,6 +199,16 @@ the actual asset URL to write.** This project never uploads images — DAM asset
   lifted it, re-verified by sending 6, 8, 12, 20, 40 and all 57 usable assets of one property to a
   single tab — every one accepted, no new ceiling found. `MAX_GALLERY_IMAGES` is now `Infinity`.
   **The lesson outlives the cap: always check the per-field statuses, never just `body.Success`.**
+  **REAPPEARED 2026-08-21.** During the Amenities-category rollout (see item 10 below), the identical
+  error (`"Number of AssetUrls exceeds the maximum limit of 5 for field alias gallery-images"`) came
+  back on two unrelated properties (`RRI360`, `RRI479`) sending exactly 6 URLs — confirmed not
+  transient by retrying the exact same call standalone a few minutes later, same failure both times.
+  Root cause unknown (CMS-side regression vs. some other trigger) - **flagged to the user to raise
+  with the CMS/Milestone team; automation is paused pending their answer.** Until confirmed lifted
+  again, treat the cap as ACTIVE: any write of 6+ AssetUrls to `gallery-images` may fail, and code
+  that removes an image from one tab to add it to another must apply the removal FIRST and only add
+  to the destination on confirmed success (see item 10) - otherwise a cap failure on the removal side
+  duplicates the image, since the two writes aren't atomic with each other.
 - **A DAM token can die BEFORE its `exp`.** Mid-batch, 21 properties failed with
   `DAM auth failed` while the JWT still had 6.7 hours left; the API answered `401` with
   `www-authenticate: Bearer error="invalid_token"`. Re-logging into Asgard appears to revoke the
@@ -309,6 +319,20 @@ src/
                                         the RediStay reference feed (see rules 2/4 note below).
                                         Exports buildDamGalleryPlan() + applyDamGalleryForProperty()
                                         for single-property use.
+  galleryPlan4.js                      buildAmenitiesMovePlan() - the 4th-category (Amenities) plan
+                                        builder, see rollout status item 10. Surgical: only plans moves
+                                        for images already sitting in Exterior/Interior/Rooms whose
+                                        reference-feed entry classifies as Amenities.
+  amenitiesGalleryBatch.js             CLI: `node src/amenitiesGalleryBatch.js <startIndex> <batchSize>`
+                                        - applies the Amenities move plan for a slice (creates the
+                                        Amenities record only if missing, duplicate-safe). Shrinks run
+                                        BEFORE the Amenities add so a failed shrink never duplicates an
+                                        image (item 10). Writes output/amenities-gallery-batch-*.json +
+                                        merges output/amenities-gallery-by-property.json.
+  verifyAmenitiesFalsePositives.js     One-off audit: re-checks every already-moved Amenities image
+                                        against the CURRENT classify() in galleryPlan4.js, to catch
+                                        moves made under an earlier, buggier version of the classifier.
+                                        Read-only. Writes output/amenities-false-positives.json.
   coverageScan.js                      CLI: `node src/coverageScan.js` - read-only sweep of all 712,
                                         counting listing/gallery/room images per property. Writes
                                         output/image-zero-report.{json,csv}. This is how a batch gets
@@ -376,6 +400,105 @@ output/                       all generated data - plans, logs, property list. G
 8. Branches: work happens on `jainil-develop` and `vishal-develop`; **`main` is not touched**, per
    explicit instruction. `output/` is gitignored, so each person's progress files aren't visible to
    the other — share status separately before assuming a range is untouched.
+9. **Strict 3-node accuracy audit (2026-08-19) — done, near-100%, 2 items need a human.** The user
+   tightened the spec: every image must trace to one exact reference field — `listing-page-image` <-
+   `ThumbnailImage.Image.FileName`, `gallery-images` (3 tabs) <- `ImageGallery[].Image.FileName`,
+   `room-images` <- `RoomDetails[].ThumbnailImage.Image.FileName`. Built `verifyImageAccuracy.js` /
+   `verifyImageAccuracyBatch.js` (a live 712-property audit) plus a Jest suite (`npm test` = fast
+   unit tests on the matching logic, no network; `npm run test:live` = the gated full live audit).
+   - First run: 704/712 clean, 92 flagged "mismatches". On inspection, only **2 were real wrong-image
+     bugs** (`RRI296`, `RRI662` — stale listing images, now fixed). Everything else was one of two
+     non-bug categories:
+     - **48 gallery images (~20 properties)**: real, correct photos that are DAM-folder-sourced
+       (rule 4) rather than literally named in `ImageGallery[]` — because for that specific
+       property+tab, the reference feed has ZERO images in that category at all.
+       `UpdateMiblockRecordAsset` requires ≥1 non-blank `AssetUrl`, so a tab with nothing to trace to
+       can be left alone but never forced empty through this API. **Accepted as a permanent gap, not
+       a bug** — there is nothing valid to replace those images with.
+     - **41 room "mismatches`**: all `actual: null` (no image at all, never a wrong one). Root cause:
+       RediStay points many rooms at its own generic "no real photo" placeholder filenames
+       (`Red-Roof-Inn-Default-Room-Image-2-Beds.jpg`, `...-1-Bed.jpg`,
+       `Images-Not-Available-Placeholder-RRI-S.png`) that were never uploaded to DAM. The user
+       uploaded the 2-Beds + listing placeholders to a **shared, non-property DAM folder**
+       (`red-roof/site-images/`) — needed a new `findSharedAsset()` in `damClient.js` since the
+       normal property-scoped search can't see outside one property's own folder. A generic
+       single-bed photo (`red-roof/other-images/rri-default-room-image.jpg`) stood in for the
+       never-uploaded "1-Bed" default. `fixDefaultRoomImages.js` applied that to 12 rooms.
+   - **2 items still pending, need a human, not more code:**
+     1. 4 room photos (`RRI121` x3, `RRI148` x1) need their own real, specific, unique photo
+        uploaded to DAM — see `output/fix-accuracy-issues-result.json`'s `still-no-dam-match`
+        entries for the exact expected filenames. A generic default would be wrong for these
+        (their reference filenames are one-off, not a shared placeholder name).
+     2. 8 properties (`HTS1031`, `RRI079`, `RRI1272`, `RRI1279`, `RRI1426`, `RRI455`, `RRI905`,
+        `TRC1415`) have **zero data in RediStay's reference API** — confirmed via direct call,
+        response is `NoDataReturnedError`/`NoResultsError` from RediStay's own SDL API, not a DAM or
+        CMS-side issue. Their `listing-page-image`/`property-level-gallery` already have real images
+        from the phase above; only `room-type` is empty (0 records — correctly, since there's no
+        reference data to create rooms from). Needs RediStay's own data team, not this project.
+   - Also found/fixed a real bug in the audit script: `gallery-images`/`room-images` occasionally
+     comes back as the literal **string** `"[]"` instead of a real array, crashing a naive `.map()`.
+     See `asArray()` in `verifyImageAccuracy.js` — defend against this in any new code that reads
+     these fields.
+10. **4th gallery category "Amenities" (2026-08-21) — IN PROGRESS, paused pending a CMS-side answer.**
+    Client added a 4th `property-level-gallery` tab alongside Exterior/Interior/Rooms, with their own
+    examples: Exterior includes pet area/fire pit/EV charging; Interior includes lobby/breakfast;
+    Amenities covers pool, fitness center, business center, vending, laundry, meeting rooms.
+    - **New CMS record type discovered working**: `property-level-gallery` records CAN be created via
+      `CreateComponentRecord` the same way `room-type` records are — Profile-linked (`SelectedProfiles`
+      + `PreviousAssignProfileIds`, same per-property `ProfileId` as room-type) with
+      `MainParentComponentId`/`ParentComponentId` = `20132` (property-data, the actual parent) and
+      `ComponentName`/top-level `componentName` = `"Property-Level-Gallery"` (display name, not the
+      alias — same alias-fails gotcha as room-type). `gallery-tab-name` is a free-text field, not a
+      CMS-side enum — confirmed via screenshot of the admin "Add Component Record" form, so no
+      CMS-admin-side setup was needed before creating "Amenities" tabs by API.
+    - **Approach is surgical, not a rebuild**: `galleryPlan4.js`'s `buildAmenitiesMovePlan()` only
+      moves images that are CURRENTLY SITTING in a property's Exterior/Interior/Rooms tab AND whose
+      RediStay reference-feed entry (`Image.AlternateText` + `Caption`) classifies as Amenities — it
+      never rebuilds those 3 tabs wholesale from the reference feed, which would have undone the
+      DAM-folder-based fix already applied to ~210 properties (rule 4's `damGalleryBatch.js`, thinner
+      reference-feed subset). Classification is deliberately sourced from the reference feed (not DAM
+      filenames), per explicit instruction — it catches things a filename never would, e.g. a photo
+      literally named `...Snack-Center...` whose `AlternateText` says `"...Vending Image"`.
+    - **Three real bugs found and fixed live during the rollout**, in order:
+      1. Moving the ONLY amenity-classified image out of a tab left it with 0 remaining -
+         `UpdateMiblockRecordAsset` rejects an empty `AssetUrls` list, so the shrink write failed
+         while the separate Amenities-add write still succeeded, duplicating the image in both
+         places. Hit on `HTS1298`/`HTS1284` in the first 0–100 pilot (fixed by hand: delete the
+         Amenities record if it would end up empty, otherwise strip the duplicate back out). Code fix:
+         never let a shrink's move-set equal the tab's full image count — always keep >= 1 behind.
+      2. `\bpool\b`-style keyword matching broke two ways at once: a bare `pool` substring matched
+         "Poolside" inside ROOM captions (`"Superior King Poolside Non-Smoking"`), wrongly
+         reclassifying 4 room photos on `RRI479`; fixing that with `\b` boundaries then broke
+         legitimate matches on underscore-joined `AlternateText` (`"HTS1022_Laundry PRO Approved
+         Image"`) because JS regex treats `_` as a `\w` character, so `\blaundry\b` found no boundary
+         after `_`. Final fix: normalize `_`/`-` to spaces before running the `\b` keyword regexes.
+         Re-audited every already-moved image against the fixed classifier after each fix
+         (`verifyAmenitiesFalsePositives.js`) — first pass found 18 false positives (17 were the
+         underscore bug, re-checked clean after fix 2; 1 was the genuine poolside case on `RRI479`).
+      3. The shrink-then-add sequence itself wasn't atomic: if the shrink write failed for ANY reason
+         (bug 1, or the cap below) but the separate Amenities-add succeeded anyway, the image
+         duplicated again. Fixed in `amenitiesGalleryBatch.js`: shrinks now run FIRST, and only images
+         whose shrink call actually returned `Success: true` are included in the Amenities
+         create/update payload — a failed shrink now just leaves that image where it already was.
+    - **The lifted 5-asset-per-field cap (see Known gaps) reappeared live** on `RRI360` and `RRI479`
+      (both sending exactly 6 URLs), confirmed non-transient by retry. **Paused the batch rollout here
+      pending the user raising it with the CMS/Milestone team** — do not resume mass-applying until
+      either the cap is confirmed lifted again or a decision is made on how to handle >5-image tabs.
+    - **Rollout progress so far**: property-codes.json indices 0–100 (0–100 batch + retries), 100–200,
+      and a partial slice of 200–300 (stopped mid-run at user request, ~360/612 of the earlier
+      combined 100–712 background attempt before it was also stopped and restarted in 100-batches) have
+      been processed. Remaining: most of 200–300 onward through 712. `output/amenities-gallery-by-
+      property.json` is the running master log (same merge-on-write pattern as the other batch
+      scripts) — but note a batch stopped mid-run via `TaskStop` never reaches its own `writeFile` call,
+      so that slice's entries are missing from the master log even though the live CMS writes already
+      happened (real writes are per-call, not deferred to the end) — cross-check `action-log.jsonl` for
+      ground truth on anything stopped mid-run, don't trust the master JSON's completeness alone.
+    - **Two properties need manual follow-up once the cap question is resolved**: `RRI360` (Amenities
+      record deleted rather than left duplicated — Interior's 3 amenity images are still sitting there
+      un-moved, `144041`) and `RRI479` (4 room photos — `superior-king-5`, `vanity-bath-4`,
+      `2-full-beds`, `standard-king` — are currently in NEITHER Exterior nor Amenities, pending a write
+      of 6 total URLs to Exterior `148147` that the cap currently blocks; Amenities `223852` itself is
+      already correctly populated with just `pool` + `guest-laundry`).
 
 ## How to run things
 
